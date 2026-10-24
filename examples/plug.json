@@ -1,0 +1,8 @@
+{
+  "label": "Example data: 500 ft balanced plug in 8-3/4 in open hole through 3-1/2 in drill pipe",
+  "mode": "plug",
+  "hole_id_in": 8.75, "pipe_od_in": 3.5, "pipe_id_in": 2.764,
+  "plug_length_ft": 500, "plug_bottom_md_ft": 9000, "excess_pct": 20,
+  "spacer_ahead_bbl": 10, "slurry_yield_ft3_sk": 1.06, "slurry_water_gal_sk": 4.3,
+  "pump_output_bbl_stk": 0.102
+}

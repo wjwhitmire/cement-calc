@@ -1,0 +1,1324 @@
+<title>Cement Calc</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Hanken+Grotesk:wght@400;600&family=Inconsolata:wght@400;700&display=swap">
+<style>
+/* Field Tools v3, No. 05 Cement Calc: the cementing job log on a grey cement unit. Night theme: the unit's control cab. */
+:root {
+  --bg: #cfd0cc; --surface: #ececea; --surface-2: #dcddd9; --hair: #b9bab5; --line: #686a64;
+  --fg: #1a1b19; --muted: #464843; --accent: #8f3200; --accent-ink: #ffffff;
+  --mark: #b3121b; --mark-ink: #ffffff;
+  --good: #1d6331; --warn: #6e4800; --bad: #9d1414; --field: #f6f6f4;
+  --chart-1: #1a1b19; --chart-2: #b3121b; --chart-3: #3d6e9e; --chart-4: #8f3200; --chart-grid: #c4c5c0;
+  --display: "Alfa Slab One", "Rockwell Extra Bold", Rockwell, "Roboto Slab", "DejaVu Serif", serif;
+  --body: "Hanken Grotesk", "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "Inconsolata", ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141516; --surface: #1c1e20; --surface-2: #25282b; --hair: #303438; --line: #7c828a;
+  --fg: #eceeee; --muted: #b2b7bc; --accent: #ffc21a; --accent-ink: #1a1400;
+  --mark: #ff6b5e; --mark-ink: #141516;
+  --good: #6fd08c; --warn: #ffa860; --bad: #ff9a8c; --field: #101112;
+  --chart-1: #eceeee; --chart-2: #ff6b5e; --chart-3: #7fb6ff; --chart-4: #ffc21a; --chart-grid: #2d3135;
+  --display: "Alfa Slab One", "Rockwell Extra Bold", Rockwell, "Roboto Slab", "DejaVu Serif", serif;
+  --body: "Hanken Grotesk", "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "Inconsolata", ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141516; --surface: #1c1e20; --surface-2: #25282b; --hair: #303438; --line: #7c828a;
+  --fg: #eceeee; --muted: #b2b7bc; --accent: #ffc21a; --accent-ink: #1a1400;
+  --mark: #ff6b5e; --mark-ink: #141516;
+  --good: #6fd08c; --warn: #ffa860; --bad: #ff9a8c; --field: #101112;
+  --chart-1: #eceeee; --chart-2: #ff6b5e; --chart-3: #7fb6ff; --chart-4: #ffc21a; --chart-grid: #2d3135;
+  --display: "Alfa Slab One", "Rockwell Extra Bold", Rockwell, "Roboto Slab", "DejaVu Serif", serif;
+  --body: "Hanken Grotesk", "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+  --mono: "Inconsolata", ui-monospace, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--fg); background: var(--bg); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 40px;
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Hazard stripe: safety orange (hi-vis yellow at night) against unit grey. */
+.haz { height: 8px; margin: 0 -16px 18px; background: repeating-linear-gradient(45deg, var(--accent) 0 10px, var(--surface-2) 10px 20px); }
+
+/* Header: bulk truck lettering over the job log line. */
+.sheet-head { margin-bottom: 2px; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 8vw, 3rem); line-height: 1; letter-spacing: .01em; margin: 0 0 8px; color: var(--fg); }
+.job { font-family: var(--mono); font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-variant-numeric: tabular-nums; }
+.lede { margin: 0; color: var(--muted); max-width: 64ch; }
+.notice { margin: 12px 0 0; font-size: 16px; color: var(--fg); border: 2px solid var(--warn); background: var(--surface); padding: 6px 10px; max-width: 72ch; }
+h2, h3, summary, legend, caption { font-family: var(--display); font-weight: 400; letter-spacing: .01em; line-height: 1.1; }
+h2 { font-size: 1.45rem; margin: 0 0 12px; }
+h3 { font-size: 1.15rem; margin: 0 0 8px; }
+
+/* Panels: log sheets clipped to the unit. Square, hard edged. */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 0; padding: 14px; min-width: 0; }
+@media (min-width: 700px) { .panel { padding: 18px; } }
+
+/* Fields: stencilled entries on the log. */
+.hint { font-size: 14px; color: var(--muted); margin: 0; }
+textarea, input[type="number"], input[type="text"], select {
+  font: inherit; font-size: 16px; color: var(--fg); background: var(--field);
+  border: 2px solid var(--line); border-radius: 0; padding: 8px 10px; min-height: 44px; min-width: 0; width: 100%;
+}
+input[type="number"], input[type="text"] { font-family: var(--mono); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+textarea { font-family: var(--mono); font-size: 15px; line-height: 1.45; resize: vertical; }
+::placeholder { color: var(--muted); opacity: 1; }
+fieldset { border: 1px solid var(--hair); border-radius: 0; margin: 0; padding: 10px 12px 12px; min-width: 0; background: var(--surface); }
+legend { padding: 0 6px; font-size: 1.05rem; color: var(--fg); }
+
+/* Buttons */
+button {
+  font: inherit; font-size: 16px; font-weight: 600; line-height: 1.2; border-radius: 0; padding: 10px 16px; min-height: 44px; cursor: pointer;
+  border: 2px solid var(--line); background: var(--field); color: var(--fg);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+button:hover { background: var(--surface-2); }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.primary:hover { background: var(--accent); filter: brightness(1.1); }
+
+/* Status: the unit printout line. */
+.status { font-family: var(--mono); font-size: 16px; margin: 0; padding: 6px 10px; border: 2px solid var(--line); background: var(--field); color: var(--muted); }
+.status.good { color: var(--good); border-color: var(--good); }
+.status.warn { color: var(--warn); border-color: var(--warn); }
+.status.bad { color: var(--bad); border-color: var(--bad); }
+.tag { display: inline-block; font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--fg); background: var(--surface-2); border: 1px solid var(--line); padding: 2px 8px; }
+
+/* Readouts: job log totals. The key one is the supervisor's red stamped line. */
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; background: var(--surface); border: 1px solid var(--line); }
+.chip { padding: 10px 14px; min-width: 0; border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); margin: 0 -1px -1px 0; }
+.chip .k { font-family: var(--mono); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.chip .v { font-family: var(--mono); font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.chip .s { font-family: var(--mono); font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip.mark {
+  grid-column: 1 / -1; order: -1; display: flex; flex-wrap: wrap; align-items: stretch; padding: 12px 14px 10px 22px;
+  background: var(--surface) repeating-linear-gradient(45deg, var(--accent) 0 6px, var(--surface-2) 6px 12px) left top / 8px 100% no-repeat;
+}
+.chip.mark .k { display: flex; align-items: center; background: var(--mark); color: var(--mark-ink); font-family: var(--display); font-weight: 400; font-size: 18px; letter-spacing: .01em; text-transform: none; padding: 8px 12px; }
+.chip.mark .v { flex: 1 1 10ch; display: flex; align-items: baseline; flex-wrap: wrap; border: 2px solid var(--mark); padding: 4px 12px; font-size: 30px; line-height: 1.25; }
+.chip.mark .s { flex-basis: 100%; padding-top: 6px; }
+
+/* Tables: the unit's printout. Inverted header strip, monospace rows. */
+.scroll { overflow: auto; max-height: 520px; border: 1px solid var(--line); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--hair); }
+th { position: sticky; top: 0; background: var(--fg); color: var(--surface); font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; border-bottom: 0; }
+tbody tr:nth-child(5n) td { border-bottom-color: var(--line); }
+td.na { color: var(--muted); }
+
+/* Legend */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 15px; color: var(--muted); margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Method and limits, footer */
+footer { margin-top: 8px; color: var(--muted); font-size: 16px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 0; padding: 0 16px; margin-top: 12px; color: var(--fg); }
+summary { cursor: pointer; font-size: 1.2rem; padding: 12px 0; min-height: 44px; list-style-position: outside; }
+details[open] summary { border-bottom: 1px solid var(--hair); margin-bottom: 8px; }
+details[open] { padding-bottom: 12px; }
+details p, details li { max-width: 74ch; font-size: 16px; }
+details code, .eq { font-family: var(--mono); font-size: 15px; }
+.eq { display: block; background: var(--field); border: 1px solid var(--hair); padding: 8px 12px; margin: 8px 0; overflow-x: auto; white-space: pre; }
+.maker { font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+/* Well schematic fluids (tool-specific): drilling mud, spacer, lead, tail, displacement fluid, base below plug, steel. */
+:root {
+  --fl-mud: #6c655a; --fl-spacer: #6b2498; --fl-lead: #7f6e28; --fl-tail: #4f2a0b; --fl-disp: #3f7990; --fl-base: #3f4954; --fl-steel: #1a1b19;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --fl-mud: #b2ad99; --fl-spacer: #8a73e6; --fl-lead: #d49738; --fl-tail: #9c5a28; --fl-disp: #71caf4; --fl-base: #82868e; --fl-steel: #eceeee; } }
+:root[data-theme="dark"] {
+  --fl-mud: #b2ad99; --fl-spacer: #8a73e6; --fl-lead: #d49738; --fl-tail: #9c5a28; --fl-disp: #71caf4; --fl-base: #82868e; --fl-steel: #eceeee; }
+
+/* Cement Calc layout */
+.wrap { display: grid; gap: 16px; }
+.wrap > * { min-width: 0; }
+.panel { display: grid; gap: 14px; margin-bottom: 0; }
+.panel > * { min-width: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.row > * { min-width: 0; }
+.head-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.head-row h2 { margin: 0; }
+.head-row .tag { white-space: normal; line-height: 1.5; }
+.head-row .tag:empty { display: none; }
+.row > label, .fieldgrid label { display: grid; gap: 5px; font-size: 15px; font-weight: 600; color: var(--fg); }
+label .u { font-family: var(--mono); font-size: 13px; font-weight: 400; color: var(--muted); }
+input[type="number"]:disabled { color: var(--muted); background: var(--surface-2); border-style: dashed; }
+input[aria-invalid="true"] { border-color: var(--bad); box-shadow: inset 0 0 0 1px var(--bad); }
+input[type="file"] { max-width: 100%; font: inherit; font-size: 15px; font-weight: 400; color: var(--muted); }
+input[type="file"]::file-selector-button { font: inherit; font-size: 16px; font-weight: 600; color: var(--fg); background: var(--field); border: 2px solid var(--line); border-radius: 0; padding: 10px 16px; min-height: 44px; margin-right: 10px; cursor: pointer; }
+input[type="file"]::file-selector-button:hover { background: var(--surface-2); }
+
+/* Mode tabs: the stage being pumped carries the hazard stripe. */
+.tabs { display: flex; gap: 6px; border-bottom: 2px solid var(--line); overflow-x: auto; }
+.tabs button { border: 1px solid var(--line); border-bottom: 0; background: var(--surface-2); padding: 14px 16px 8px; white-space: nowrap; font-family: var(--display); font-weight: 400; font-size: 1.1rem; letter-spacing: .01em; color: var(--muted); }
+.tabs button:hover { background: var(--surface); color: var(--fg); }
+.tabs button[aria-selected="true"] { color: var(--fg); background: var(--surface) repeating-linear-gradient(45deg, var(--accent) 0 6px, var(--surface-2) 6px 12px) left top / 100% 8px no-repeat; border-color: var(--line); }
+@media (max-width: 420px) { .tabs { gap: 4px; } .tabs button { font-size: 1rem; padding: 14px 10px 8px; } }
+.tabpanel { display: grid; gap: 16px; }
+.tabpanel > * { min-width: 0; }
+
+fieldset { display: grid; gap: 10px; align-content: start; }
+.groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.groups > * { min-width: 0; }
+.fieldgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.fieldgrid > * { min-width: 0; }
+.fieldgrid label { grid-template-rows: 1fr auto; }
+.fieldgrid label .lt { align-self: end; }
+.check { display: flex; gap: 10px; align-items: center; min-height: 44px; font-size: 16px; color: var(--fg); cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 0; accent-color: var(--accent); }
+.help { margin: 0; font-size: 16px; color: var(--muted); max-width: 72ch; }
+
+/* Job checks beside the Results head: printed check lines. */
+.stamps { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.stamp { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 15px; padding: 2px 8px; border: 2px solid currentColor; background: var(--field); }
+.stamp.good { color: var(--good); } .stamp.warn { color: var(--warn); } .stamp.bad { color: var(--bad); }
+
+.results { display: grid; gap: 14px; transition: opacity .15s; }
+.results > * { min-width: 0; }
+.results.stale { opacity: .4; }
+.chip > span { display: block; }
+.chip .v small { display: inline-block; font-size: 14px; font-weight: 400; color: var(--muted); margin-left: 6px; }
+.chip.mark .v small { font-size: 16px; }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 16px; align-items: start; }
+.split > * { min-width: 0; }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.tables { display: grid; gap: 14px; }
+.tables > * { min-width: 0; }
+th:not(.num), td:not(.num) { text-align: left; }
+caption { text-align: left; caption-side: top; font-size: 1.05rem; color: var(--fg); padding: 8px 10px 6px; background: var(--surface); }
+tr.total td { font-weight: 700; border-top: 2px solid var(--fg); border-bottom: 0; }
+
+/* Well schematic: drawn on the plot field, fluids from the --fl tokens. */
+.diagram { margin: 0; border: 1px solid var(--line); padding: 10px; display: grid; gap: 8px; background: var(--field); }
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram svg text { fill: var(--muted); font-family: var(--mono); font-size: 13px; }
+.diagram svg text.ttl { fill: var(--fg); font-family: var(--display); font-weight: 400; font-size: 15px; letter-spacing: .01em; }
+.diagram .lead-line { stroke: var(--line); stroke-width: 1; }
+.diagram .legend { margin-top: 0; }
+.sw { display: inline-block; width: 14px; height: 14px; border: 1px solid var(--line); flex: none; }
+@media (max-width: 560px) {
+  .diagram { padding: 6px; }
+  #p-svg text { font-size: 14px; }
+  #b-svg text { font-size: 13px; }
+  #b-svg text.ttl { font-size: 15px; }
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.actions .msg { font-size: 16px; color: var(--muted); }
+textarea.fallback { min-height: 140px; font-size: 15px; background: var(--surface-2); }
+
+.method { max-width: 76ch; }
+.method h3 { margin: 16px 0 8px; }
+.method h3:first-child { margin-top: 4px; }
+.method ul { padding-left: 20px; display: grid; gap: 6px; }
+footer { display: grid; gap: 8px; }
+footer p { margin: 0; }
+footer .maker { margin-top: -4px; }
+.vh { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<div class="wrap" data-cat="drilling">
+  <header class="sheet-head">
+    <div class="haz" aria-hidden="true"></div>
+    <h1>Cement Calc</h1>
+    <p class="job">Job log: primary casing job, balanced plug &middot; bbl, sk, ppg, psi</p>
+    <p class="lede">Cement volumes, sacks, mix water, displacement and static pressures for a primary casing job or a balanced plug, from standard oilfield volumetrics.</p>
+    <p class="notice">Planning cross-check only. The service company's job design governs. Check every number against the approved cementing program before pumping.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Calculation mode">
+    <button type="button" role="tab" id="tab-primary" aria-controls="panel-primary" aria-selected="true">Primary casing job</button>
+    <button type="button" role="tab" id="tab-plug" aria-controls="panel-plug" aria-selected="false" tabindex="-1">Balanced plug</button>
+  </div>
+
+  <!-- PRIMARY -->
+  <div class="tabpanel" role="tabpanel" id="panel-primary" aria-labelledby="tab-primary">
+    <section class="panel" aria-labelledby="p-in-h">
+      <div class="head-row">
+        <h2 id="p-in-h">Inputs</h2>
+        <span class="tag" id="p-data-tag"></span>
+      </div>
+      <div class="row">
+        <button type="button" id="p-reset">Load example data</button>
+        <label for="p-file">Load job file (JSON, or key,value CSV/TSV)
+          <input type="file" id="p-file" accept=".json,.csv,.tsv,.txt,application/json,text/csv,text/plain">
+        </label>
+      </div>
+      <div class="groups" id="p-groups"></div>
+      <p id="p-status" class="status ok" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="p-out-h">
+      <div class="head-row">
+        <h2 id="p-out-h">Results</h2>
+        <div class="stamps" id="p-chips"></div>
+      </div>
+      <div class="results" id="p-results">
+        <div class="chips" id="p-tiles"></div>
+        <div class="split">
+          <div class="tables" id="p-tables"></div>
+          <figure class="diagram">
+            <svg id="p-svg" viewBox="0 0 380 466" role="img" aria-labelledby="p-svg-t"><title id="p-svg-t">Well schematic</title></svg>
+            <figcaption class="legend" id="p-legend"></figcaption>
+            <p class="help">Not to scale horizontally. Depth is MD from surface.</p>
+          </figure>
+        </div>
+        <div class="tables" id="p-wide"></div>
+      </div>
+      <div class="actions">
+        <button type="button" class="primary" id="p-copy">Copy results as CSV</button>
+        <span class="msg" id="p-copy-msg" role="status" aria-live="polite"></span>
+      </div>
+      <div id="p-fallback-wrap" hidden>
+        <label for="p-fallback">Copy failed in this browser. Select and copy the text below.</label>
+        <textarea class="fallback" id="p-fallback" readonly></textarea>
+      </div>
+    </section>
+  </div>
+
+  <!-- PLUG -->
+  <div class="tabpanel" role="tabpanel" id="panel-plug" aria-labelledby="tab-plug" hidden>
+    <section class="panel" aria-labelledby="b-in-h">
+      <div class="head-row">
+        <h2 id="b-in-h">Inputs</h2>
+        <span class="tag" id="b-data-tag"></span>
+      </div>
+      <div class="row">
+        <button type="button" id="b-reset">Load example data</button>
+        <label for="b-file">Load job file (JSON, or key,value CSV/TSV)
+          <input type="file" id="b-file" accept=".json,.csv,.tsv,.txt,application/json,text/csv,text/plain">
+        </label>
+      </div>
+      <div class="groups" id="b-groups"></div>
+      <p class="help">The pipe is open ended and its end sits at the bottom of the plug. Spacer ahead is pumped before the slurry; the tool sizes the spacer behind so both spacer columns end at the same height.</p>
+      <p id="b-status" class="status ok" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="b-out-h">
+      <div class="head-row">
+        <h2 id="b-out-h">Results</h2>
+        <div class="stamps" id="b-chips"></div>
+      </div>
+      <div class="results" id="b-results">
+        <div class="chips" id="b-tiles"></div>
+        <div class="split">
+          <div class="tables" id="b-tables"></div>
+          <figure class="diagram">
+            <svg id="b-svg" viewBox="0 0 440 430" role="img" aria-labelledby="b-svg-t"><title id="b-svg-t">Balanced plug schematic</title></svg>
+            <figcaption class="legend" id="b-legend"></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="primary" id="b-copy">Copy results as CSV</button>
+        <span class="msg" id="b-copy-msg" role="status" aria-live="polite"></span>
+      </div>
+      <div id="b-fallback-wrap" hidden>
+        <label for="b-fallback">Copy failed in this browser. Select and copy the text below.</label>
+        <textarea class="fallback" id="b-fallback" readonly></textarea>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Built by Will Whitmire. Runs entirely in your browser; nothing you enter is uploaded.</p>
+    <p class="maker">W. Whitmire / Field Tools / No. 05</p>
+    <p>Open source, MIT license. A planning cross-check written from standard oilfield volumetrics. Not affiliated with any service company or app vendor.</p>
+    <details id="method">
+      <summary>Method and limits</summary>
+      <div class="method">
+        <h3>Constants</h3>
+        <ul>
+          <li><code>1029.4</code>: capacity in bbl/ft of a circle of diameter D inches is D<sup>2</sup> / 1029.4. From (pi/4) x (D/12)<sup>2</sup> ft<sup>2</sup> divided by 5.6146 ft<sup>3</sup>/bbl.</li>
+          <li><code>5.6146</code> ft<sup>3</sup> per barrel (42 US gal x 231 in<sup>3</sup>/gal / 1728 in<sup>3</sup>/ft<sup>3</sup>).</li>
+          <li><code>0.052</code> psi/ft per ppg: hydrostatic gradient of a 1 lb/gal fluid (12 in x 12 in x 12 in / 231 in<sup>3</sup>/gal / 144 in<sup>2</sup>/ft<sup>2</sup>, rounded as used in the field).</li>
+          <li><code>42</code> US gallons per barrel.</li>
+        </ul>
+        <h3>Primary casing job</h3>
+        <code class="eq">Casing capacity      Ci  = ID^2 / 1029.4                      bbl/ft
+Cased annulus        Cc  = (prev ID^2 - OD^2) / 1029.4        bbl/ft, no excess
+Open hole annulus    Co  = (hole^2 - OD^2) / 1029.4           bbl/ft
+                     Co' = Co x (1 + excess% / 100)           excess on open hole only
+ft3/ft               = bbl/ft x 5.6146
+Interval volume      V   = C x length                         split at the previous shoe
+Shoe track           Vst = Ci x (shoe MD - float collar MD)   filled with tail
+Lead volume          = annulus, top of lead to top of tail
+Tail volume          = annulus, top of tail to shoe + Vst
+Sacks                = ceil(V ft3 / yield ft3/sk)
+Mix water            = sacks x water gal/sk / 42              bbl
+Displacement         = Ci x float collar MD                   bbl
+Strokes              = displacement / pump output (bbl/stk)</code>
+        <p>Spacer sits directly above the top of lead in the annulus, filling the annular volume up from the top of lead (cased annulus with no excess above the previous shoe, open hole with excess below it). Mud fills the annulus above the spacer.</p>
+        <code class="eq">P (psi) = 0.052 x density (ppg) x TVD span (ft), summed by column
+Annulus at float collar = mud + spacer + lead + tail down to the float collar
+Inside at float collar  = displacement fluid from surface to the float collar
+Differential at bump    = annulus - inside      (positive: annulus heavier)
+Shoe EMW (ppg)          = annulus hydrostatic at shoe / (0.052 x shoe TVD)</code>
+        <p>The differential is the static U-tube pressure the float equipment and the cement head see once the plug bumps, before any pump pressure. The annulus is summed column by column down to the float collar, so lead below the float collar (top of tail set below it) is counted as lead. When the top of tail is at or above the float collar, the shoe track and the annulus both hold tail below the float collar and that part cancels, so the reference depth does not change the answer. Shoe EMW is compared with the fracture gradient EMW you enter; a red chip shows when it is exceeded.</p>
+        <p>TVD: tick "TVD = MD" for a vertical well. Otherwise enter TVD at the top of lead, top of tail and shoe (float collar optional). TVD between stations is interpolated linearly in MD from surface. Every fluid boundary is an entered station except the spacer top (and the float collar when its TVD is left blank), so in a deviated well the spacer top TVD is the one interpolated value; if the well kicks off above the top of lead, that TVD is approximate and the error is 0.052 x (spacer minus mud density) x the TVD error. Take every station TVD from the survey, not from an estimate.</p>
+        <h3>Balanced plug</h3>
+        <code class="eq">Hole        Ch = hole^2 / 1029.4
+Pipe inside Cp = pipe ID^2 / 1029.4
+Annulus     Ca = (hole^2 - pipe OD^2) / 1029.4
+Slurry      V  = plug length x Ch x (1 + excess% / 100)
+Sacks       = ceil(V x 5.6146 / yield)
+Height, pipe in        h  = V / (Ca + Cp)         same inside and outside
+Spacer behind          Vb = spacer ahead x Cp / Ca
+Displacement           Vd = Cp x (bottom MD - h) - Vb - under-displacement
+Top with pipe in       = bottom MD - h
+Top after pulling pipe = bottom MD - V / Ch       gauge hole</code>
+        <p>Pull-out height: once the pipe is out, the slurry drops to fill the steel volume it leaves, so the column shortens from h to V / Ch. With excess in a gauge hole the plug top sits above the design top by the excess fraction; in a hole washed out by the excess it lands on the design top.</p>
+        <h3>Limits</h3>
+        <ul>
+          <li>Static volumetrics only. No friction pressure, ECD during placement, free fall, U-tubing while pumping, temperature, compressibility or slurry thickening.</li>
+          <li>Open hole is one uniform diameter. Use a caliper average and pick the excess for your hole. Excess applies to open hole only; cased overlap uses no excess.</li>
+          <li>Casing is one size from surface to shoe. Tapered strings, liners, stage tools and cross-overs are not modeled.</li>
+          <li>The shoe track is filled with tail slurry. Rat hole below the shoe, cement left on top of the plug, and pumped surface lines are not added; enter them as part of excess or your own extras.</li>
+          <li>Displacement ignores casing stretch, mud compressibility, and pump efficiency; strokes use the pump output you enter as is.</li>
+          <li>Hydrostatics use the 0.052 field factor and densities as entered, at one temperature. TVD between stations is linear in MD; only the spacer top (and a float collar entered without TVD) falls between stations, so only those TVDs are approximate in a curved well.</li>
+          <li>The balanced plug assumes open-ended pipe at the plug bottom, a stable base below, and pipe pulled dry and slowly. Contamination and slurry left on the pipe wall are ignored.</li>
+          <li>Sacks are rounded up per slurry. Blend, additives and bulk density are the service company's call.</li>
+        </ul>
+        <p>Files: JSON object of named inputs, or one <code>key,value</code> pair per row (comma or tab, optional header, # comments). Keys match the Python library and the README. Files over 5 MB or 50,000 rows are refused.</p>
+      </div>
+    </details>
+  </footer>
+</div>
+
+<script id="core">
+var CementCore = (function () {
+  "use strict";
+  var CAP_DIVISOR = 1029.4, FT3_PER_BBL = 5.6146, PSI_PER_FT_PPG = 0.052, GAL_PER_BBL = 42, SACK_EPS = 1e-9;
+  var MAX_DENSITY_PPG = 30, MAX_EXCESS_PCT = 500, TVD_TOL_FT = 1e-6;
+  var MAX_BYTES = 5 * 1024 * 1024, MAX_ROWS = 50000;
+
+  function InputError(code, message) { var e = new Error(message); e.name = "InputError"; e.code = code; return e; }
+  function capacityBblFt(d) { return d * d / CAP_DIVISOR; }
+  function annularCapacityBblFt(h, p) { return (h * h - p * p) / CAP_DIVISOR; }
+  function sacksFor(ft3, y) {
+    if (ft3 <= 0) return 0;
+    var n = ft3 / y - SACK_EPS;
+    if (!isFinite(n)) throw InputError("bad_yield", "Sack count is too large to compute. Check the slurry yield (ft3/sk) and the depths.");
+    return Math.ceil(n);
+  }
+  function mixWaterBbl(sk, w) { return sk * w / GAL_PER_BBL; }
+  function hydrostaticPsi(rho, tvd) { return PSI_PER_FT_PPG * rho * tvd; }
+  function cap(b) { return { bbl_ft: b, ft3_ft: b * FT3_PER_BBL }; }
+  // One CSV cell: neutralize spreadsheet formula starts (= + - @ tab CR) unless the cell is a plain number, and quote commas or quotes.
+  function csvCell(v) {
+    var s = v === null || v === undefined ? "" : String(v);
+    if (/^[=+\-@\t\r]/.test(s) && !/^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(s)) s = "'" + s;
+    if (/[",\r\n]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  function g(x) { return String(Math.round(x * 1e6) / 1e6); }
+
+  function num(c, k, required) {
+    if (required === undefined) required = true;
+    var v = c[k];
+    if (!Object.prototype.hasOwnProperty.call(c, k) || v === null || v === undefined || v === "") {
+      if (required) throw InputError("missing", "Missing input: " + k + ".");
+      return null;
+    }
+    if (typeof v !== "number") throw InputError("not_number", k + " must be a number.");
+    if (!isFinite(v)) throw InputError("not_number", k + " must be a finite number.");
+    return v;
+  }
+  function flag(c, k) {
+    var v = c[k];
+    if (typeof v === "string") return ["1", "true", "yes", "y"].indexOf(v.trim().toLowerCase()) >= 0;
+    return !!v;
+  }
+
+  // Plausibility limits: same values and sources as core.py.
+  var GAL_PER_FT3 = 7.48052;
+  var SLURRY_PPG_HARD = [4.0, 25.0], SLURRY_PPG_TYPICAL = [11.0, 19.0];
+  var FLUID_PPG_HARD = [5.0, 25.0], FLUID_PPG_TYPICAL = [6.5, 20.0];
+  var YIELD_HARD = [0.5, 15.0], YIELD_TYPICAL = [0.9, 4.0], WATER_TYPICAL = [3.5, 25.0];
+  var OH_EXCESS_TYPICAL_MAX = 100.0, MIN_CLEARANCE_IN = 0.75, PUMP_TYPICAL = [0.02, 0.5];
+
+  function slurryChecks(name, prefix, density, yld, water, warnings) {
+    if (density !== null) {
+      if (!(SLURRY_PPG_HARD[0] <= density && density <= SLURRY_PPG_HARD[1])) throw InputError("implausible", prefix + "_density_ppg must be between " + g(SLURRY_PPG_HARD[0]) + " and " + g(SLURRY_PPG_HARD[1]) + " ppg for a cement slurry.");
+      if (!(SLURRY_PPG_TYPICAL[0] <= density && density <= SLURRY_PPG_TYPICAL[1])) warnings.push({ code: "unusual_density", message: name + " density " + g(density) + " ppg is outside the usual " + g(SLURRY_PPG_TYPICAL[0]) + " to " + g(SLURRY_PPG_TYPICAL[1]) + " ppg. Fine for a foamed or specially weighted slurry; otherwise check it." });
+    }
+    if (!(YIELD_HARD[0] <= yld && yld <= YIELD_HARD[1])) throw InputError("implausible", prefix + "_yield_ft3_sk must be between " + g(YIELD_HARD[0]) + " and " + g(YIELD_HARD[1]) + " ft3/sk.");
+    if (water !== null && water / GAL_PER_FT3 >= yld) throw InputError("implausible", prefix + "_yield_ft3_sk must be larger than its mix water (" + g(water) + " gal/sk = " + (water / GAL_PER_FT3).toFixed(2) + " ft3/sk). A sack of slurry cannot be smaller than the water in it.");
+    if (!(YIELD_TYPICAL[0] <= yld && yld <= YIELD_TYPICAL[1])) warnings.push({ code: "unusual_yield", message: name + " yield " + g(yld) + " ft3/sk is outside the usual " + g(YIELD_TYPICAL[0]) + " to " + g(YIELD_TYPICAL[1]) + " ft3/sk. Check it against the lab report." });
+    if (water !== null && !(WATER_TYPICAL[0] <= water && water <= WATER_TYPICAL[1])) warnings.push({ code: "unusual_water", message: name + " mix water " + g(water) + " gal/sk is outside the usual " + g(WATER_TYPICAL[0]) + " to " + g(WATER_TYPICAL[1]) + " gal/sk. Check it against the lab report." });
+  }
+  function pumpCheck(pump, warnings) {
+    if (pump !== null && !(PUMP_TYPICAL[0] <= pump && pump <= PUMP_TYPICAL[1])) warnings.push({ code: "unusual_pump", message: "Pump output " + g(pump) + " bbl/stk is outside the usual " + g(PUMP_TYPICAL[0]) + " to " + g(PUMP_TYPICAL[1]) + " bbl/stk. Check the units." });
+  }
+
+  var PRIMARY_KEYS = [
+    "casing_od_in", "casing_id_in", "shoe_md_ft", "float_collar_md_ft",
+    "prev_casing_id_in", "prev_shoe_md_ft", "open_hole_in", "oh_excess_pct",
+    "top_lead_md_ft", "top_tail_md_ft",
+    "lead_density_ppg", "lead_yield_ft3_sk", "lead_water_gal_sk",
+    "tail_density_ppg", "tail_yield_ft3_sk", "tail_water_gal_sk",
+    "spacer_bbl", "spacer_density_ppg", "mud_density_ppg", "disp_density_ppg",
+    "frac_emw_ppg"
+  ];
+
+  function validatePrimary(c) {
+    var v = {}, i, k;
+    for (i = 0; i < PRIMARY_KEYS.length; i++) v[PRIMARY_KEYS[i]] = num(c, PRIMARY_KEYS[i]);
+    v.pump_output_bbl_stk = num(c, "pump_output_bbl_stk", false);
+    if (v.casing_od_in <= 0 || v.casing_id_in <= 0) throw InputError("bad_value", "Casing OD and ID must be greater than zero.");
+    if (v.casing_id_in >= v.casing_od_in) throw InputError("casing_id_ge_od", "Casing ID must be smaller than casing OD.");
+    if (v.casing_od_in >= v.open_hole_in) throw InputError("pipe_od_ge_hole", "Casing OD must be smaller than the open hole diameter.");
+    if (v.shoe_md_ft <= 0 || v.float_collar_md_ft <= 0) throw InputError("bad_value", "Shoe and float collar depths must be greater than zero.");
+    if (v.float_collar_md_ft >= v.shoe_md_ft) throw InputError("float_collar_below_shoe", "Float collar must be above the shoe (float collar MD less than shoe MD).");
+    if (v.prev_shoe_md_ft < 0 || v.prev_shoe_md_ft >= v.shoe_md_ft) throw InputError("prev_shoe_order", "Previous casing shoe must be at or below surface and above the new shoe. Use 0 for no previous casing.");
+    if (v.prev_shoe_md_ft > 0 && v.prev_casing_id_in <= v.casing_od_in) throw InputError("prev_id_le_casing_od", "Previous casing ID must be larger than the new casing OD.");
+    if (!(0 <= v.top_lead_md_ft && v.top_lead_md_ft <= v.top_tail_md_ft && v.top_tail_md_ft < v.shoe_md_ft)) throw InputError("tops_order", "Tops out of order. Need 0 <= top of lead <= top of tail < shoe MD.");
+    if (!(0 <= v.oh_excess_pct && v.oh_excess_pct <= MAX_EXCESS_PCT)) throw InputError("bad_excess", "Open hole excess must be between 0 and " + MAX_EXCESS_PCT + " percent.");
+    var dens = ["lead_density_ppg", "tail_density_ppg", "spacer_density_ppg", "mud_density_ppg", "disp_density_ppg"];
+    for (i = 0; i < dens.length; i++) { k = dens[i]; if (!(0 < v[k] && v[k] < MAX_DENSITY_PPG)) throw InputError("bad_density", k + " must be between 0 and " + MAX_DENSITY_PPG + " ppg."); }
+    var ys = ["lead_yield_ft3_sk", "tail_yield_ft3_sk"];
+    for (i = 0; i < ys.length; i++) { k = ys[i]; if (v[k] <= 0) throw InputError("bad_yield", k + " must be greater than zero."); }
+    var nn = ["lead_water_gal_sk", "tail_water_gal_sk", "spacer_bbl"];
+    for (i = 0; i < nn.length; i++) { k = nn[i]; if (v[k] < 0) throw InputError("bad_value", k + " cannot be negative."); }
+    if (v.frac_emw_ppg <= 0) throw InputError("bad_frac", "Fracture gradient EMW must be greater than zero.");
+    if (v.pump_output_bbl_stk !== null && v.pump_output_bbl_stk <= 0) throw InputError("bad_value", "Pump output must be greater than zero, or left blank.");
+
+    v.tvd_equals_md = flag(c, "tvd_equals_md");
+    var pts = [[0, 0]], stations = [];
+    if (!v.tvd_equals_md) {
+      stations.push([v.top_lead_md_ft, num(c, "tvd_top_lead_ft")]);
+      stations.push([v.top_tail_md_ft, num(c, "tvd_top_tail_ft")]);
+      var fcTvd = num(c, "tvd_float_collar_ft", false);
+      if (fcTvd !== null) stations.push([v.float_collar_md_ft, fcTvd]);
+      stations.push([v.shoe_md_ft, num(c, "tvd_shoe_ft")]);
+    }
+    for (i = 0; i < stations.length; i++) {
+      var md = stations[i][0], tvd = stations[i][1];
+      var last = pts[pts.length - 1];
+      if (tvd < 0 || tvd < last[1] - TVD_TOL_FT || (tvd - last[1]) > (md - last[0]) + TVD_TOL_FT) {
+        throw InputError("tvd_inconsistent", "TVD " + g(tvd) + " ft at MD " + g(md) + " ft is not possible. TVD must not decrease with depth and cannot gain more than MD gains.");
+      }
+      if (md - last[0] <= TVD_TOL_FT) continue;
+      pts.push([md, tvd]);
+    }
+    v.stations = pts;
+
+    // Plausibility: refuse the impossible, warn on the unusual.
+    var plaus = [];
+    slurryChecks("Lead", "lead", v.lead_density_ppg, v.lead_yield_ft3_sk, v.lead_water_gal_sk, plaus);
+    slurryChecks("Tail", "tail", v.tail_density_ppg, v.tail_yield_ft3_sk, v.tail_water_gal_sk, plaus);
+    var fl = [["spacer_density_ppg", "Spacer"], ["mud_density_ppg", "Mud"], ["disp_density_ppg", "Displacement fluid"]];
+    for (i = 0; i < fl.length; i++) {
+      k = fl[i][0];
+      if (!(FLUID_PPG_HARD[0] <= v[k] && v[k] <= FLUID_PPG_HARD[1])) throw InputError("implausible", k + " must be between " + g(FLUID_PPG_HARD[0]) + " and " + g(FLUID_PPG_HARD[1]) + " ppg.");
+      if (!(FLUID_PPG_TYPICAL[0] <= v[k] && v[k] <= FLUID_PPG_TYPICAL[1])) plaus.push({ code: "unusual_density", message: fl[i][1] + " density " + g(v[k]) + " ppg is outside the usual " + g(FLUID_PPG_TYPICAL[0]) + " to " + g(FLUID_PPG_TYPICAL[1]) + " ppg. Check it." });
+    }
+    if (v.oh_excess_pct > OH_EXCESS_TYPICAL_MAX) plaus.push({ code: "unusual_excess", message: "Open hole excess of " + g(v.oh_excess_pct) + " percent is above " + g(OH_EXCESS_TYPICAL_MAX) + " percent. Use a caliper if the hole is that washed out." });
+    if (v.open_hole_in - v.casing_od_in < MIN_CLEARANCE_IN) plaus.push({ code: "tight_clearance", message: "Open hole is only " + (v.open_hole_in - v.casing_od_in).toFixed(3) + " in larger than the casing OD (under " + g(MIN_CLEARANCE_IN) + " in). Running casing and placing cement are doubtful." });
+    if (v.prev_shoe_md_ft > 0 && v.prev_casing_id_in - v.casing_od_in < MIN_CLEARANCE_IN) plaus.push({ code: "tight_clearance", message: "Previous casing ID is only " + (v.prev_casing_id_in - v.casing_od_in).toFixed(3) + " in larger than the casing OD (under " + g(MIN_CLEARANCE_IN) + " in)." });
+    pumpCheck(v.pump_output_bbl_stk, plaus);
+    v.plausibility = plaus;
+    return v;
+  }
+
+  function tvdAt(st, md) {
+    if (st.length === 1) return md;
+    var i, m0, t0, m1, t1;
+    for (i = 1; i < st.length; i++) {
+      m0 = st[i - 1][0]; t0 = st[i - 1][1]; m1 = st[i][0]; t1 = st[i][1];
+      if (md <= m1 + TVD_TOL_FT) return t0 + (t1 - t0) * (md - m0) / (m1 - m0);
+    }
+    m0 = st[st.length - 2][0]; t0 = st[st.length - 2][1]; m1 = st[st.length - 1][0]; t1 = st[st.length - 1][1];
+    return t0 + (t1 - t0) * (md - m0) / (m1 - m0);
+  }
+
+  function primaryJob(c) {
+    var v = validatePrimary(c);
+    var warnings = v.plausibility.slice();
+    var od = v.casing_od_in, shoe = v.shoe_md_ft, fc = v.float_collar_md_ft, prev = v.prev_shoe_md_ft;
+    var ex = v.oh_excess_pct / 100;
+    var capIn = capacityBblFt(v.casing_id_in);
+    var capCased = prev > 0 ? annularCapacityBblFt(v.prev_casing_id_in, od) : 0;
+    var capOh = annularCapacityBblFt(v.open_hole_in, od);
+    var capOhEx = capOh * (1 + ex);
+
+    if (prev > 0 && v.open_hole_in > v.prev_casing_id_in) warnings.push({ code: "hole_larger_than_prev_id", message: "Open hole diameter is larger than the previous casing ID. Check the hole size (underreamed hole is possible)." });
+    if (v.top_tail_md_ft > fc) warnings.push({ code: "tail_top_below_float_collar", message: "Top of tail is below the float collar. Most of the tail is in the shoe track." });
+
+    function segments(top, bottom) {
+      var out = [];
+      if (bottom <= top) return out;
+      if (top < prev) out.push(["cased", top, Math.min(bottom, prev), capCased, 0]);
+      if (bottom > prev) out.push(["open", Math.max(top, prev), bottom, capOhEx, ex]);
+      return out;
+    }
+
+    var intervals = [], totals = { lead: 0, tail: 0 };
+    var spans = [["lead", v.top_lead_md_ft, v.top_tail_md_ft], ["tail", v.top_tail_md_ft, shoe]];
+    spans.forEach(function (s) {
+      segments(s[1], s[2]).forEach(function (seg) {
+        var vol = seg[3] * (seg[2] - seg[1]);
+        totals[s[0]] += vol;
+        intervals.push({
+          fluid: s[0], geometry: seg[0], top_md_ft: seg[1], bottom_md_ft: seg[2],
+          length_ft: seg[2] - seg[1], cap_bbl_ft: seg[3], excess_pct: seg[4] * 100,
+          vol_bbl: vol, vol_ft3: vol * FT3_PER_BBL
+        });
+      });
+    });
+
+    var stLen = shoe - fc, stVol = capIn * stLen;
+    function slurry(prefix, volBbl) {
+      var ft3 = volBbl * FT3_PER_BBL;
+      var sk = sacksFor(ft3, v[prefix + "_yield_ft3_sk"]);
+      return { vol_bbl: volBbl, vol_ft3: ft3, sacks: sk, mix_water_bbl: mixWaterBbl(sk, v[prefix + "_water_gal_sk"]), density_ppg: v[prefix + "_density_ppg"] };
+    }
+    var lead = slurry("lead", totals.lead);
+    var tail = slurry("tail", totals.tail + stVol);
+    tail.annulus_bbl = totals.tail;
+    tail.shoe_track_bbl = stVol;
+
+    var disp = capIn * fc;
+    var pump = v.pump_output_bbl_stk;
+    var strokes = pump ? disp / pump : null;
+
+    var remaining = v.spacer_bbl, spacerTop = v.top_lead_md_ft;
+    var up = segments(0, v.top_lead_md_ft).reverse();
+    for (var i = 0; i < up.length; i++) {
+      var t = up[i][1], b = up[i][2], cp = up[i][3];
+      var segVol = cp * (b - t);
+      if (remaining <= segVol) {
+        spacerTop = cp > 0 ? b - remaining / cp : b;
+        remaining = 0;
+        break;
+      }
+      remaining -= segVol;
+      spacerTop = t;
+    }
+    var spacerTruncated = remaining > 1e-9;
+    if (spacerTruncated) {
+      spacerTop = 0;
+      warnings.push({ code: "spacer_above_surface", message: "Spacer volume is more than the annulus above the top of lead. Pressures assume spacer to surface." });
+    }
+
+    var st = v.stations;
+    function col(name, density, top, bottom) {
+      var tt = tvdAt(st, top), bt = tvdAt(st, bottom);
+      return { fluid: name, density_ppg: density, top_md_ft: top, bottom_md_ft: bottom, top_tvd_ft: tt, bottom_tvd_ft: bt, psi: hydrostaticPsi(density, bt - tt) };
+    }
+    var annulus = [
+      col("mud", v.mud_density_ppg, 0, spacerTop),
+      col("spacer", v.spacer_density_ppg, spacerTop, v.top_lead_md_ft),
+      col("lead", v.lead_density_ppg, v.top_lead_md_ft, v.top_tail_md_ft),
+      col("tail", v.tail_density_ppg, v.top_tail_md_ft, shoe)
+    ];
+    var inside = [
+      col("displacement", v.disp_density_ppg, 0, fc),
+      col("tail", v.tail_density_ppg, fc, shoe)
+    ];
+    function sum(a) { var s = 0; for (var j = 0; j < a.length; j++) s += a[j].psi; return s; }
+    var pAnn = sum(annulus), pIn = sum(inside);
+    var fcTvd = tvdAt(st, fc);
+    // Cut each annulus column at the float collar (lead below it stays lead).
+    var pAnnFc = 0;
+    annulus.forEach(function (cl) {
+      if (cl.top_md_ft < fc) pAnnFc += hydrostaticPsi(cl.density_ppg, tvdAt(st, Math.min(cl.bottom_md_ft, fc)) - tvdAt(st, Math.min(cl.top_md_ft, fc)));
+    });
+    var pInFc = inside[0].psi;
+    var shoeTvd = tvdAt(st, shoe);
+    var emw = pAnn / (PSI_PER_FT_PPG * shoeTvd);
+    var margin = v.frac_emw_ppg - emw;
+    var exceeded = emw > v.frac_emw_ppg;
+    if (exceeded) warnings.push({ code: "frac_exceeded", message: "Static hydrostatic at the shoe exceeds the entered fracture gradient." });
+
+    return {
+      mode: "primary",
+      capacities: {
+        casing_inside: cap(capIn), cased_annulus: cap(capCased),
+        open_hole_annulus: cap(capOh), open_hole_annulus_with_excess: cap(capOhEx)
+      },
+      intervals: intervals,
+      shoe_track: { length_ft: stLen, vol_bbl: stVol, vol_ft3: stVol * FT3_PER_BBL },
+      lead: lead, tail: tail,
+      total_cement_bbl: lead.vol_bbl + tail.vol_bbl,
+      displacement: { vol_bbl: disp, strokes: strokes },
+      spacer: { vol_bbl: v.spacer_bbl, top_md_ft: spacerTop, bottom_md_ft: v.top_lead_md_ft, truncated: spacerTruncated },
+      pressure: {
+        annulus_columns: annulus, inside_columns: inside,
+        annulus_psi: pAnn, inside_psi: pIn,
+        annulus_at_fc_psi: pAnnFc, inside_at_fc_psi: pInFc,
+        differential_psi: pAnnFc - pInFc,
+        shoe_tvd_ft: shoeTvd, float_collar_tvd_ft: fcTvd,
+        shoe_emw_ppg: emw, frac_emw_ppg: v.frac_emw_ppg,
+        frac_margin_ppg: margin, frac_exceeded: exceeded
+      },
+      warnings: warnings
+    };
+  }
+
+  var PLUG_KEYS = ["hole_id_in", "pipe_od_in", "pipe_id_in", "plug_length_ft", "plug_bottom_md_ft", "excess_pct", "spacer_ahead_bbl", "slurry_yield_ft3_sk"];
+
+  function balancedPlug(c) {
+    var v = {};
+    PLUG_KEYS.forEach(function (k) { v[k] = num(c, k); });
+    var water = num(c, "slurry_water_gal_sk", false);
+    var pump = num(c, "pump_output_bbl_stk", false);
+    var under = num(c, "underdisplace_bbl", false) || 0;
+    if (v.hole_id_in <= 0 || v.pipe_od_in <= 0 || v.pipe_id_in <= 0) throw InputError("bad_value", "Hole size, pipe OD and pipe ID must be greater than zero.");
+    if (v.pipe_id_in >= v.pipe_od_in) throw InputError("pipe_id_ge_od", "Pipe ID must be smaller than pipe OD.");
+    if (v.pipe_od_in >= v.hole_id_in) throw InputError("pipe_od_ge_hole", "Pipe OD must be smaller than the hole size or casing ID.");
+    if (v.plug_length_ft <= 0) throw InputError("bad_value", "Plug length must be greater than zero.");
+    if (v.plug_bottom_md_ft <= v.plug_length_ft) throw InputError("plug_above_surface", "Bottom of plug must be deeper than the plug length.");
+    if (!(0 <= v.excess_pct && v.excess_pct <= MAX_EXCESS_PCT)) throw InputError("bad_excess", "Excess must be between 0 and " + MAX_EXCESS_PCT + " percent.");
+    if (v.spacer_ahead_bbl < 0 || under < 0) throw InputError("bad_value", "Spacer and under-displacement volumes cannot be negative.");
+    if (v.slurry_yield_ft3_sk <= 0) throw InputError("bad_yield", "Slurry yield must be greater than zero.");
+    if (water !== null && water < 0) throw InputError("bad_value", "Mix water cannot be negative.");
+    if (pump !== null && pump <= 0) throw InputError("bad_value", "Pump output must be greater than zero, or left blank.");
+
+    var warnings = [];
+    slurryChecks("Slurry", "slurry", null, v.slurry_yield_ft3_sk, water, warnings);
+    pumpCheck(pump, warnings);
+    var ch = capacityBblFt(v.hole_id_in), cp = capacityBblFt(v.pipe_id_in), ca = annularCapacityBblFt(v.hole_id_in, v.pipe_od_in);
+    var bottom = v.plug_bottom_md_ft, ex = v.excess_pct / 100;
+    var vol = v.plug_length_ft * ch * (1 + ex);
+    var ft3 = vol * FT3_PER_BBL;
+    var sk = sacksFor(ft3, v.slurry_yield_ft3_sk);
+    var h = vol / (ca + cp);
+    var topPipeIn = bottom - h;
+    var behind = v.spacer_ahead_bbl * cp / ca;
+    var hSpacerAnn = v.spacer_ahead_bbl / ca;
+    var hSpacerPipe = cp > 0 ? behind / cp : 0;
+    if (topPipeIn - hSpacerAnn < 0) throw InputError("plug_above_surface", "Cement plus spacer column would reach above surface. Check depths and volumes.");
+    var disp = cp * (bottom - h) - behind - under;
+    if (disp <= 0) throw InputError("bad_value", "Displacement volume is zero or negative. Check spacer and under-displacement volumes.");
+    if (under > 0) warnings.push({ code: "underdisplaced", message: "Under-displacement leaves fluid in the pipe above balance. The plug is no longer exactly balanced." });
+
+    return {
+      mode: "plug",
+      capacities: { hole: cap(ch), pipe_inside: cap(cp), annulus: cap(ca) },
+      slurry: { vol_bbl: vol, vol_ft3: ft3, sacks: sk, mix_water_bbl: water !== null ? mixWaterBbl(sk, water) : null },
+      column_height_ft: h,
+      cement_height_inside_ft: (vol - ca * h) / cp,
+      cement_height_outside_ft: (vol - cp * h) / ca,
+      top_with_pipe_in_md_ft: topPipeIn,
+      top_after_pull_gauge_md_ft: bottom - vol / ch,
+      top_after_pull_design_md_ft: bottom - v.plug_length_ft,
+      spacer_ahead: { vol_bbl: v.spacer_ahead_bbl, height_annulus_ft: hSpacerAnn },
+      spacer_behind: { vol_bbl: behind, height_pipe_ft: hSpacerPipe },
+      displacement: { vol_bbl: disp, strokes: pump ? disp / pump : null },
+      pipe_end_md_ft: bottom,
+      warnings: warnings
+    };
+  }
+
+  function evaluate(c) {
+    if (c === null || typeof c !== "object" || Array.isArray(c)) throw InputError("bad_value", "Input must be an object of named values.");
+    var mode = Object.prototype.hasOwnProperty.call(c, "mode") ? c.mode : "primary";
+    if (mode === "primary") return primaryJob(c);
+    if (mode === "plug") return balancedPlug(c);
+    throw InputError("bad_mode", "mode must be \"primary\" or \"plug\".");
+  }
+
+  // ---- file parsing (mirrors cement_calc.parse) ----
+  var TEXT_KEYS = { mode: 1, label: 1 }, BOOL_KEYS = { tvd_equals_md: 1 };
+  var NUM_RE = /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/;
+  function splitCsv(line) {
+    var parts = [], cur = "", q = false;
+    for (var i = 0; i < line.length; i++) {
+      var ch = line.charAt(i);
+      if (ch === '"') q = !q;
+      else if (ch === "," && !q) { parts.push(cur); cur = ""; }
+      else cur += ch;
+    }
+    parts.push(cur);
+    return parts;
+  }
+  function stripQ(s) { return s.trim().replace(/^"+|"+$/g, ""); }
+  function parseText(text) {
+    if (text.length > MAX_BYTES) throw InputError("file", "File is larger than 5 MB.");
+    var s = text.replace(/^﻿/, "").trim();
+    if (!s) throw InputError("file", "File is empty.");
+    if (s.charAt(0) === "{") {
+      var obj;
+      try { obj = JSON.parse(s); } catch (e) { throw InputError("file", "JSON could not be read: " + e.message); }
+      if (obj === null || typeof obj !== "object" || Array.isArray(obj)) throw InputError("file", "JSON must be an object of named inputs.");
+      return obj;
+    }
+    var lines = s.split(/\r\n|\r|\n/);
+    if (lines.length > MAX_ROWS) throw InputError("file", "File has more than 50,000 rows.");
+    var out = {}, n = 0;
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i], ln = i + 1;
+      if (!line.trim() || line.trim().charAt(0) === "#") continue;
+      var parts = (line.indexOf("\t") >= 0 ? line.split("\t") : splitCsv(line)).map(stripQ);
+      if (parts.length < 2) throw InputError("file", "Line " + ln + ": expected key and value separated by a comma or tab.");
+      var key = parts[0].toLowerCase(), raw = parts[1];
+      if (parts.length > 2 && /^[+-]?\d+$/.test(raw.trim()) && /^\d+(\.\d*)?$/.test(parts[2].trim())) {
+        // unquoted "lead_density_ppg,11,5" would otherwise be read as 11
+        throw InputError("file", "Line " + ln + ": '" + raw.trim() + "," + parts[2].trim() + "' looks like one number split by a comma. Quote it (\"15,000\"), drop the thousands comma, or use a decimal point.");
+      }
+      if (ln === 1 && ["key", "name", "input", "parameter"].indexOf(key) >= 0 && ["value", "val"].indexOf(raw.toLowerCase()) >= 0) continue;
+      if (!key) throw InputError("file", "Line " + ln + ": empty key.");
+      if (TEXT_KEYS[key]) { out[key] = raw; n++; }
+      else if (BOOL_KEYS[key]) { out[key] = ["1", "true", "yes", "y"].indexOf(raw.toLowerCase()) >= 0; n++; }
+      else if (raw === "") continue;
+      else {
+        var t0 = raw.trim();
+        if (t0.indexOf(",") >= 0 && !/^[+-]?\d{1,3}(,\d{3})+(\.\d*)?$/.test(t0)) {
+          // "1,5" is a decimal comma (or a typo), never 15
+          throw InputError("file", "Line " + ln + ": value for " + key + " has a comma that is not a thousands separator ('" + t0.slice(0, 40) + "'). Use a decimal point.");
+        }
+        var t = t0.replace(/[,_]/g, "");
+        if (!NUM_RE.test(t)) throw InputError("file", "Line " + ln + ": value for " + key + " is not a number.");
+        var x = Number(t);
+        if (!isFinite(x)) throw InputError("file", "Line " + ln + ": value for " + key + " is not a finite number.");
+        out[key] = x; n++;
+      }
+    }
+    if (!n) throw InputError("file", "No inputs found in file.");
+    return out;
+  }
+
+  var EXAMPLE_PRIMARY = {
+    label: "Example data: 5-1/2 in production casing in 8-3/4 in hole to 15,000 ft MD, lead and tail",
+    mode: "primary",
+    casing_od_in: 5.5, casing_id_in: 4.892,
+    shoe_md_ft: 15000, float_collar_md_ft: 14920,
+    prev_casing_id_in: 8.835, prev_shoe_md_ft: 5000,
+    open_hole_in: 8.75, oh_excess_pct: 30,
+    top_lead_md_ft: 4500, top_tail_md_ft: 10000,
+    lead_density_ppg: 11.5, lead_yield_ft3_sk: 2.48, lead_water_gal_sk: 14.3,
+    tail_density_ppg: 14.2, tail_yield_ft3_sk: 1.27, tail_water_gal_sk: 5.8,
+    spacer_bbl: 40, spacer_density_ppg: 12.0,
+    mud_density_ppg: 10.2, disp_density_ppg: 8.4,
+    pump_output_bbl_stk: 0.102, frac_emw_ppg: 14.5,
+    tvd_equals_md: false,
+    tvd_top_lead_ft: 4500, tvd_top_tail_ft: 9850, tvd_float_collar_ft: 10210, tvd_shoe_ft: 10212
+  };
+  var EXAMPLE_PLUG = {
+    label: "Example data: 500 ft balanced plug in 8-3/4 in open hole through 3-1/2 in drill pipe, bottom at 9,000 ft MD",
+    mode: "plug",
+    hole_id_in: 8.75, pipe_od_in: 3.5, pipe_id_in: 2.764,
+    plug_length_ft: 500, plug_bottom_md_ft: 9000, excess_pct: 20,
+    spacer_ahead_bbl: 10, slurry_yield_ft3_sk: 1.06, slurry_water_gal_sk: 4.3,
+    pump_output_bbl_stk: 0.102, underdisplace_bbl: 0
+  };
+
+  return {
+    CAP_DIVISOR: CAP_DIVISOR, FT3_PER_BBL: FT3_PER_BBL, PSI_PER_FT_PPG: PSI_PER_FT_PPG, GAL_PER_BBL: GAL_PER_BBL,
+    MAX_BYTES: MAX_BYTES, MAX_ROWS: MAX_ROWS,
+    capacityBblFt: capacityBblFt, annularCapacityBblFt: annularCapacityBblFt, sacksFor: sacksFor,
+    mixWaterBbl: mixWaterBbl, hydrostaticPsi: hydrostaticPsi,
+    primaryJob: primaryJob, balancedPlug: balancedPlug, evaluate: evaluate, parseText: parseText, csvCell: csvCell,
+    EXAMPLE_PRIMARY: EXAMPLE_PRIMARY, EXAMPLE_PLUG: EXAMPLE_PLUG
+  };
+})();
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var C = CementCore;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; return e; }
+  function sv(tag, attrs, text) { var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (text !== undefined) e.textContent = text; return e; }
+  function fmt(x, d) {
+    if (x === null || x === undefined || !isFinite(x)) return "n/a";
+    var s = Math.abs(x).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+    return (x < 0 && Number(s.replace(/,/g, "")) !== 0 ? "-" : "") + s;
+  }
+  function store(k, v) { try { localStorage.setItem("cement-calc:" + k, v); } catch (e) { /* storage unavailable */ } }
+  function load(k) { try { return localStorage.getItem("cement-calc:" + k); } catch (e) { return null; } }
+
+  // ---- input definitions: [key, label, unit, step] ----
+  var P_GROUPS = [
+    { title: "Casing", fields: [["casing_od_in", "Casing OD", "in", "0.001"], ["casing_id_in", "Casing ID", "in", "0.001"], ["shoe_md_ft", "Shoe MD", "ft", "1"], ["float_collar_md_ft", "Float collar MD", "ft", "1"]] },
+    { title: "Hole", fields: [["prev_casing_id_in", "Previous casing ID", "in", "0.001"], ["prev_shoe_md_ft", "Previous shoe MD (0 = none)", "ft", "1"], ["open_hole_in", "Open hole diameter", "in", "0.001"], ["oh_excess_pct", "Open hole excess", "%", "1"]] },
+    { title: "Cement tops", fields: [["top_lead_md_ft", "Top of lead MD", "ft", "1"], ["top_tail_md_ft", "Top of tail MD", "ft", "1"]] },
+    { title: "Lead slurry", fields: [["lead_density_ppg", "Density", "ppg", "0.1"], ["lead_yield_ft3_sk", "Yield", "ft3/sk", "0.01"], ["lead_water_gal_sk", "Mix water", "gal/sk", "0.01"]] },
+    { title: "Tail slurry", fields: [["tail_density_ppg", "Density", "ppg", "0.1"], ["tail_yield_ft3_sk", "Yield", "ft3/sk", "0.01"], ["tail_water_gal_sk", "Mix water", "gal/sk", "0.01"]] },
+    { title: "Fluids", fields: [["spacer_bbl", "Spacer volume", "bbl", "1"], ["spacer_density_ppg", "Spacer density", "ppg", "0.1"], ["mud_density_ppg", "Mud density", "ppg", "0.1"], ["disp_density_ppg", "Displacement fluid", "ppg", "0.1"]] },
+    { title: "Pump and limits", fields: [["pump_output_bbl_stk", "Pump output (optional)", "bbl/stk", "0.001"], ["frac_emw_ppg", "Fracture gradient at shoe", "ppg EMW", "0.1"]] },
+    { title: "True vertical depth", tvd: true, fields: [["tvd_top_lead_ft", "TVD at top of lead", "ft", "1"], ["tvd_top_tail_ft", "TVD at top of tail", "ft", "1"], ["tvd_float_collar_ft", "TVD at float collar (optional)", "ft", "1"], ["tvd_shoe_ft", "TVD at shoe", "ft", "1"]] }
+  ];
+  var B_GROUPS = [
+    { title: "Geometry", fields: [["hole_id_in", "Hole size or casing ID", "in", "0.001"], ["pipe_od_in", "Pipe OD", "in", "0.001"], ["pipe_id_in", "Pipe ID", "in", "0.001"]] },
+    { title: "Plug", fields: [["plug_length_ft", "Plug length", "ft", "1"], ["plug_bottom_md_ft", "Bottom of plug MD", "ft", "1"], ["excess_pct", "Excess", "%", "1"]] },
+    { title: "Slurry and fluids", fields: [["slurry_yield_ft3_sk", "Slurry yield", "ft3/sk", "0.01"], ["slurry_water_gal_sk", "Mix water (optional)", "gal/sk", "0.01"], ["spacer_ahead_bbl", "Spacer ahead", "bbl", "0.1"]] },
+    { title: "Pumping", fields: [["pump_output_bbl_stk", "Pump output (optional)", "bbl/stk", "0.001"], ["underdisplace_bbl", "Under-displace (optional)", "bbl", "0.1"]] }
+  ];
+
+  // Maps error codes to the inputs to mark.
+  var ERR_FIELDS = {
+    pipe_od_ge_hole: ["casing_od_in", "open_hole_in", "pipe_od_in", "hole_id_in"],
+    casing_id_ge_od: ["casing_id_in", "casing_od_in"],
+    pipe_id_ge_od: ["pipe_id_in", "pipe_od_in"],
+    float_collar_below_shoe: ["float_collar_md_ft", "shoe_md_ft"],
+    prev_shoe_order: ["prev_shoe_md_ft"],
+    prev_id_le_casing_od: ["prev_casing_id_in"],
+    tops_order: ["top_lead_md_ft", "top_tail_md_ft"],
+    bad_excess: ["oh_excess_pct", "excess_pct"],
+    bad_frac: ["frac_emw_ppg"],
+    tvd_inconsistent: ["tvd_top_lead_ft", "tvd_top_tail_ft", "tvd_float_collar_ft", "tvd_shoe_ft"],
+    plug_above_surface: ["plug_bottom_md_ft", "plug_length_ft"]
+  };
+
+  function Mode(prefix, mode, groups, example) {
+    this.p = prefix; this.mode = mode; this.groups = groups; this.example = example;
+    this.inputs = {}; this.last = null; this.edited = false;
+  }
+  Mode.prototype.id = function (k) { return this.p + "-" + k; };
+
+  Mode.prototype.build = function () {
+    var self = this, host = $(this.p + "-groups");
+    this.groups.forEach(function (gr) {
+      var fs = el("fieldset"); fs.appendChild(el("legend", null, gr.title));
+      if (gr.tvd) {
+        var lab = el("label", "check"); lab.setAttribute("for", self.id("tvd_equals_md"));
+        var cb = el("input"); cb.type = "checkbox"; cb.id = self.id("tvd_equals_md");
+        lab.appendChild(cb); lab.appendChild(document.createTextNode("TVD = MD (vertical well)"));
+        fs.appendChild(lab);
+        self.tvdBox = cb;
+        cb.addEventListener("change", function () { self.syncTvd(); self.edited = true; self.run(); });
+      }
+      var grid = el("div", "fieldgrid");
+      gr.fields.forEach(function (f) {
+        var lab = el("label"); lab.setAttribute("for", self.id(f[0]));
+        var lt = el("span", "lt", f[1] + " ");
+        lt.appendChild(el("span", "u", "(" + f[2] + ")"));
+        lab.appendChild(lt);
+        var inp = el("input"); inp.type = "number"; inp.id = self.id(f[0]); inp.step = f[3]; inp.inputMode = "decimal";
+        inp.addEventListener("input", function () { self.edited = true; self.run(); });
+        lab.appendChild(inp); grid.appendChild(lab);
+        self.inputs[f[0]] = inp;
+      });
+      fs.appendChild(grid);
+      host.appendChild(fs);
+    });
+    $(this.p + "-reset").addEventListener("click", function () { self.fill(self.example, true); });
+    $(this.p + "-file").addEventListener("change", function (ev) { self.onFile(ev); });
+    $(this.p + "-copy").addEventListener("click", function () { self.copy(); });
+  };
+
+  Mode.prototype.syncTvd = function () {
+    if (!this.tvdBox) return;
+    var on = this.tvdBox.checked;
+    ["tvd_top_lead_ft", "tvd_top_tail_ft", "tvd_float_collar_ft", "tvd_shoe_ft"].forEach(function (k) { this.inputs[k].disabled = on; }, this);
+  };
+
+  Mode.prototype.fill = function (obj, isExample) {
+    for (var k in this.inputs) {
+      var v = obj[k];
+      this.inputs[k].value = (typeof v === "number" && isFinite(v)) ? String(v) : "";
+    }
+    this.note = "";
+    if (this.tvdBox) {
+      var t = obj.tvd_equals_md;
+      this.tvdBox.checked = typeof t === "string" ? ["1", "true", "yes", "y"].indexOf(t.toLowerCase()) >= 0 : !!t;
+      var noTvd = ["tvd_top_lead_ft", "tvd_top_tail_ft", "tvd_float_collar_ft", "tvd_shoe_ft"].every(function (k) { return obj[k] === undefined || obj[k] === null || obj[k] === ""; });
+      if (!this.tvdBox.checked && t === undefined && noTvd) {
+        // a file with no TVDs at all is read as a vertical well rather than stopping on "Missing input"
+        this.tvdBox.checked = true;
+        this.note = " The file has no TVDs, so TVD = MD (vertical well) is assumed; untick it to enter TVDs.";
+      }
+      this.syncTvd();
+    }
+    this.edited = false;
+    this.source = isExample ? obj.label : "Loaded from file";
+    this.run();
+  };
+
+  Mode.prototype.read = function () {
+    var c = { mode: this.mode };
+    for (var k in this.inputs) {
+      var s = this.inputs[k].value.trim();
+      if (s === "") continue;
+      var x = Number(s);
+      c[k] = isFinite(x) && s !== "" ? x : s;
+    }
+    if (this.tvdBox) c.tvd_equals_md = this.tvdBox.checked;
+    return c;
+  };
+
+  // Error messages name inputs by their key (lead_density_ppg); show the label on screen instead.
+  Mode.prototype.plain = function (msg) {
+    var names = {};
+    this.groups.forEach(function (gr) {
+      gr.fields.forEach(function (f) {
+        var label = f[1].replace(/ \(optional\)$/, "");
+        if (/^(Density|Yield|Mix water)$/.test(label)) label = gr.title + " " + label.toLowerCase();
+        names[f[0]] = label;
+      });
+    });
+    return String(msg).replace(/\b[a-z]+(?:_[a-z0-9]+)+\b/g, function (k) { return names[k] || k; });
+  };
+
+  Mode.prototype.setStatus = function (msg, bad) {
+    var s = $(this.p + "-status");
+    s.textContent = msg; s.className = "status " + (bad ? "bad" : "ok");
+  };
+
+  Mode.prototype.run = function () {
+    var tag = $(this.p + "-data-tag");
+    tag.textContent = this.edited ? "Your inputs" : (this.source || "");
+    for (var k in this.inputs) this.inputs[k].removeAttribute("aria-invalid");
+    var res;
+    try { res = C.evaluate(this.read()); }
+    catch (e) {
+      if (!e.code) throw e;
+      this.setStatus(this.plain(e.message), true);
+      this.last = null;
+      $(this.p + "-copy").disabled = true;
+      (ERR_FIELDS[e.code] || []).forEach(function (f) { if (this.inputs[f]) this.inputs[f].setAttribute("aria-invalid", "true"); }, this);
+      var m = /Missing input: ([a-z_0-9]+)/.exec(e.message) || /^([a-z_0-9]+) (?:must|cannot)/.exec(e.message);
+      if (m && this.inputs[m[1]]) this.inputs[m[1]].setAttribute("aria-invalid", "true");
+      $(this.p + "-results").classList.add("stale");
+      return;
+    }
+    $(this.p + "-results").classList.remove("stale");
+    $(this.p + "-copy").disabled = false;
+    this.setStatus("Inputs valid. Results update as you type." + (this.edited ? "" : (this.note || "")), false);
+    this.last = res;
+    if (this.mode === "primary") renderPrimary(res, this.read()); else renderPlug(res, this.read());
+  };
+
+  Mode.prototype.onFile = function (ev) {
+    var self = this, f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    if (f.size > C.MAX_BYTES) { this.setStatus("That file is larger than 5 MB. A job file is a few dozen lines.", true); ev.target.value = ""; return; }
+    var reader = new FileReader();
+    reader.addEventListener("load", function () {
+      var obj;
+      try { obj = C.parseText(String(reader.result || "")); }
+      catch (e) { self.setStatus("Could not read file: " + e.message, true); ev.target.value = ""; return; }
+      var m = obj.mode || "primary";
+      var target = m === "plug" ? MODES.plug : MODES.primary;
+      if (m !== "plug" && m !== "primary") { self.setStatus("File mode must be primary or plug.", true); return; }
+      selectTab(target.mode);
+      target.fill(obj, false);
+      ev.target.value = "";
+    });
+    reader.addEventListener("error", function () { self.setStatus("The browser could not read that file.", true); });
+    reader.readAsText(f);
+  };
+
+  Mode.prototype.copy = function () {
+    var self = this, msg = $(this.p + "-copy-msg");
+    if (!this.last) { msg.textContent = "No results to copy."; return; }
+    var text = this.mode === "primary" ? csvPrimary(this.last) : csvPlug(this.last);
+    function fallback() {
+      $(self.p + "-fallback-wrap").hidden = false;
+      var ta = $(self.p + "-fallback"); ta.value = text; ta.focus(); ta.select();
+      msg.textContent = "";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { msg.textContent = "Copied."; $(self.p + "-fallback-wrap").hidden = true; }).catch(fallback);
+    } catch (e) { fallback(); }
+  };
+
+  // ---- rendering helpers ----
+  function tile(k, v, unit, s, mark) {
+    var t = el("div", mark ? "chip mark" : "chip"); t.appendChild(el("span", "k", k));
+    var vv = el("span", "v", v); if (unit) vv.appendChild(el("small", null, unit));
+    t.appendChild(vv); if (s) t.appendChild(el("span", "s", s));
+    return t;
+  }
+  function table(caption, heads, rows, totalRows) {
+    var wrap = el("div", "scroll"), t = el("table");
+    t.appendChild(el("caption", null, caption));
+    var thead = el("thead"), tr = el("tr");
+    heads.forEach(function (h) { var th = el("th", h[1] ? "num" : null, h[0]); th.scope = "col"; tr.appendChild(th); });
+    thead.appendChild(tr); t.appendChild(thead);
+    var tb = el("tbody");
+    function add(r, cls) {
+      var row = el("tr", cls || null);
+      r.forEach(function (cell, i) { row.appendChild(el("td", heads[i] && heads[i][1] ? "num" : null, cell)); });
+      tb.appendChild(row);
+    }
+    rows.forEach(function (r) { add(r); });
+    (totalRows || []).forEach(function (r) { add(r, "total"); });
+    t.appendChild(tb); wrap.appendChild(t);
+    return wrap;
+  }
+  function chip(cls, text) { return el("span", "stamp " + cls, text); }
+  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+  function legend(host, items) {
+    clear(host);
+    items.forEach(function (it) {
+      var s = el("span"); var sw = el("span", "sw"); sw.style.background = "var(" + it[0] + ")";
+      s.appendChild(sw); s.appendChild(document.createTextNode(it[1])); host.appendChild(s);
+    });
+  }
+  var FLUID_VAR = { mud: "--fl-mud", spacer: "--fl-spacer", lead: "--fl-lead", tail: "--fl-tail", displacement: "--fl-disp", cement: "--fl-tail" };
+  var NAMES = { mud: "Mud", spacer: "Spacer", lead: "Lead", tail: "Tail", displacement: "Displacement" };
+
+  function placeLabels(items, minY, maxY, gap) {
+    items.sort(function (a, b) { return a.y - b.y; });
+    var i;
+    for (i = 0; i < items.length; i++) { items[i].ly = Math.max(items[i].y, i ? items[i - 1].ly + gap : minY); }
+    if (items.length && items[items.length - 1].ly > maxY) {
+      items[items.length - 1].ly = maxY;
+      for (i = items.length - 2; i >= 0; i--) items[i].ly = Math.min(items[i].ly, items[i + 1].ly - gap);
+    }
+    return items;
+  }
+
+  // ---- primary ----
+  function renderPrimary(r, inp) {
+    var tiles = $("p-tiles"); clear(tiles);
+    tiles.appendChild(tile("Lead", fmt(r.lead.sacks, 0), "sk", fmt(r.lead.vol_bbl, 1) + " bbl, " + fmt(r.lead.vol_ft3, 0) + " ft3, water " + fmt(r.lead.mix_water_bbl, 1) + " bbl"));
+    tiles.appendChild(tile("Tail", fmt(r.tail.sacks, 0), "sk", fmt(r.tail.vol_bbl, 1) + " bbl, " + fmt(r.tail.vol_ft3, 0) + " ft3, water " + fmt(r.tail.mix_water_bbl, 1) + " bbl"));
+    tiles.appendChild(tile("Displacement", fmt(r.displacement.vol_bbl, 1), "bbl", r.displacement.strokes === null ? "to float collar; enter pump output for strokes" : fmt(r.displacement.strokes, 0) + " strokes to float collar", true));
+    tiles.appendChild(tile("U-tube at bump", fmt(r.pressure.differential_psi, 0), "psi", r.pressure.differential_psi >= 0 ? "annulus heavier than inside, static" : "inside heavier than annulus, static"));
+    tiles.appendChild(tile("Shoe EMW", fmt(r.pressure.shoe_emw_ppg, 2), "ppg", "frac " + fmt(r.pressure.frac_emw_ppg, 2) + " ppg, margin " + fmt(r.pressure.frac_margin_ppg, 2)));
+
+    var chips = $("p-chips"); clear(chips);
+    chips.appendChild(r.pressure.frac_exceeded ? chip("bad", "Exceeds frac gradient at shoe") : chip("good", "Below frac gradient at shoe"));
+    r.warnings.forEach(function (w) { if (w.code !== "frac_exceeded") chips.appendChild(chip("warn", w.message)); });
+
+    var host = $("p-tables"); clear(host);
+    var wide = $("p-wide"); clear(wide);
+    var c = r.capacities;
+    var capRows = [["Casing inside", c.casing_inside], ["Cased hole annulus", c.cased_annulus], ["Open hole annulus, gauge", c.open_hole_annulus], ["Open hole annulus, with excess", c.open_hole_annulus_with_excess]];
+    host.appendChild(table("Capacities", [["Geometry"], ["bbl/ft", 1], ["ft3/ft", 1]], capRows.map(function (x) { return [x[0], fmt(x[1].bbl_ft, 5), fmt(x[1].ft3_ft, 4)]; })));
+
+    var ivRows = r.intervals.map(function (iv) {
+      return [NAMES[iv.fluid], iv.geometry === "cased" ? "Cased" : "Open hole", fmt(iv.top_md_ft, 0), fmt(iv.bottom_md_ft, 0), fmt(iv.length_ft, 0), fmt(iv.excess_pct, 0), fmt(iv.vol_bbl, 2), fmt(iv.vol_ft3, 1)];
+    });
+    ivRows.push(["Tail", "Shoe track", fmt(inp.float_collar_md_ft, 0), fmt(inp.shoe_md_ft, 0), fmt(r.shoe_track.length_ft, 0), "0", fmt(r.shoe_track.vol_bbl, 2), fmt(r.shoe_track.vol_ft3, 1)]);
+    host.appendChild(table("Slurries", [["Slurry"], ["ppg", 1], ["bbl", 1], ["ft3", 1], ["Sacks", 1], ["Mix water bbl", 1]], [
+      ["Lead", fmt(r.lead.density_ppg, 2), fmt(r.lead.vol_bbl, 2), fmt(r.lead.vol_ft3, 1), fmt(r.lead.sacks, 0), fmt(r.lead.mix_water_bbl, 2)],
+      ["Tail", fmt(r.tail.density_ppg, 2), fmt(r.tail.vol_bbl, 2), fmt(r.tail.vol_ft3, 1), fmt(r.tail.sacks, 0), fmt(r.tail.mix_water_bbl, 2)]
+    ]));
+    wide.appendChild(table("Cement intervals", [["Slurry"], ["Where"], ["Top MD", 1], ["Bottom MD", 1], ["Length ft", 1], ["Excess %", 1], ["bbl", 1], ["ft3", 1]], ivRows,
+      [["Total", "", "", "", "", "", fmt(r.total_cement_bbl, 2), fmt(r.total_cement_bbl * C.FT3_PER_BBL, 1)]]));
+
+
+    var p = r.pressure;
+    function colRow(side, cl) { return [side, NAMES[cl.fluid], fmt(cl.top_md_ft, 0), fmt(cl.bottom_md_ft, 0), fmt(cl.top_tvd_ft, 0), fmt(cl.bottom_tvd_ft, 0), fmt(cl.density_ppg, 2), fmt(cl.psi, 0)]; }
+    var pr = p.annulus_columns.filter(function (x) { return x.bottom_md_ft > x.top_md_ft; }).map(function (x) { return colRow("Annulus", x); })
+      .concat(p.inside_columns.map(function (x) { return colRow("Inside", x); }));
+    wide.appendChild(table("Hydrostatic columns at bump", [["Side"], ["Fluid"], ["Top MD", 1], ["Bottom MD", 1], ["Top TVD", 1], ["Bottom TVD", 1], ["ppg", 1], ["psi", 1]], pr, [
+      ["Annulus at shoe", "", "", fmt(inp.shoe_md_ft, 0), "", fmt(p.shoe_tvd_ft, 0), fmt(p.shoe_emw_ppg, 2), fmt(p.annulus_psi, 0)],
+      ["Annulus at float collar", "", "", fmt(inp.float_collar_md_ft, 0), "", fmt(p.float_collar_tvd_ft, 0), "", fmt(p.annulus_at_fc_psi, 0)],
+      ["Inside at float collar", "", "", fmt(inp.float_collar_md_ft, 0), "", fmt(p.float_collar_tvd_ft, 0), "", fmt(p.inside_at_fc_psi, 0)],
+      ["Differential", "", "", "", "", "", "", fmt(p.differential_psi, 0)]
+    ]));
+
+    drawPrimary(r, inp);
+  }
+
+  function drawPrimary(r, inp) {
+    var svg = $("p-svg"); var title = svg.firstChild;
+    clear(svg); svg.appendChild(title);
+    var top = 30, bot = 452, H = bot - top, shoe = inp.shoe_md_ft;
+    function y(md) { return top + md / shoe * H; }
+    // x layout
+    var aL = [54, 84], wL = [84, 88], ins = [88, 132], wR = [132, 136], aR = [136, 166];
+    var prev = inp.prev_shoe_md_ft || 0;
+    function band(x0, x1, y0, y1, varName) { if (y1 - y0 <= 0) return; svg.appendChild(sv("rect", { x: x0, y: y0, width: x1 - x0, height: Math.max(y1 - y0, 0.5), fill: "var(" + varName + ")" })); }
+    r.pressure.annulus_columns.forEach(function (cl) {
+      band(aL[0], aL[1], y(cl.top_md_ft), y(cl.bottom_md_ft), FLUID_VAR[cl.fluid]);
+      band(aR[0], aR[1], y(cl.top_md_ft), y(cl.bottom_md_ft), FLUID_VAR[cl.fluid]);
+    });
+    r.pressure.inside_columns.forEach(function (cl) { band(ins[0], ins[1], y(cl.top_md_ft), y(cl.bottom_md_ft), FLUID_VAR[cl.fluid]); });
+    // casing walls
+    svg.appendChild(sv("rect", { x: wL[0], y: top, width: 4, height: H, fill: "var(--fl-steel)" }));
+    svg.appendChild(sv("rect", { x: wR[0], y: top, width: 4, height: H, fill: "var(--fl-steel)" }));
+    // shoe
+    svg.appendChild(sv("path", { d: "M80 " + bot + " L88 " + bot + " L88 " + (bot - 8) + " Z", fill: "var(--fl-steel)" }));
+    svg.appendChild(sv("path", { d: "M140 " + bot + " L132 " + bot + " L132 " + (bot - 8) + " Z", fill: "var(--fl-steel)" }));
+    // float collar
+    var yf = y(inp.float_collar_md_ft);
+    svg.appendChild(sv("rect", { x: ins[0], y: yf - 1.5, width: ins[1] - ins[0], height: 3, fill: "var(--fl-steel)" }));
+    // previous casing and hole wall
+    if (prev > 0) {
+      svg.appendChild(sv("rect", { x: 48, y: top, width: 6, height: y(prev) - top, fill: "var(--fl-steel)" }));
+      svg.appendChild(sv("rect", { x: 166, y: top, width: 6, height: y(prev) - top, fill: "var(--fl-steel)" }));
+      svg.appendChild(sv("path", { d: "M42 " + y(prev) + " L48 " + y(prev) + " L48 " + (y(prev) - 8) + " Z", fill: "var(--fl-steel)" }));
+      svg.appendChild(sv("path", { d: "M178 " + y(prev) + " L172 " + y(prev) + " L172 " + (y(prev) - 8) + " Z", fill: "var(--fl-steel)" }));
+    }
+    svg.appendChild(sv("line", { x1: 53.5, y1: y(prev), x2: 53.5, y2: bot, stroke: "var(--muted)", "stroke-width": 1, "stroke-dasharray": "3 3" }));
+    svg.appendChild(sv("line", { x1: 166.5, y1: y(prev), x2: 166.5, y2: bot, stroke: "var(--muted)", "stroke-width": 1, "stroke-dasharray": "3 3" }));
+    // surface
+    svg.appendChild(sv("line", { x1: 30, y1: top, x2: 190, y2: top, stroke: "var(--chart-3)", "stroke-width": 1 }));
+    svg.appendChild(sv("text", { x: 30, y: top - 8 }, "Surface, 0 ft MD"));
+    // labels
+    var labs = [];
+    function add(md, text) { labs.push({ y: y(md), t: text }); }
+    if (r.spacer.vol_bbl > 0 && r.spacer.top_md_ft < r.spacer.bottom_md_ft) add(r.spacer.top_md_ft, "Spacer top " + fmt(r.spacer.top_md_ft, 0));
+    add(inp.top_lead_md_ft, "Top of lead " + fmt(inp.top_lead_md_ft, 0));
+    if (prev > 0) add(prev, "Previous shoe " + fmt(prev, 0));
+    add(inp.top_tail_md_ft, "Top of tail " + fmt(inp.top_tail_md_ft, 0));
+    add(inp.float_collar_md_ft, "Float collar " + fmt(inp.float_collar_md_ft, 0));
+    add(shoe, "Shoe " + fmt(shoe, 0) + " ft MD");
+    placeLabels(labs, top + 10, bot, 14).forEach(function (L) {
+      svg.appendChild(sv("path", { d: "M172 " + L.y + " L186 " + L.y + " L196 " + L.ly + " L202 " + L.ly, class: "lead-line", fill: "none" }));
+      svg.appendChild(sv("text", { x: 206, y: L.ly + 4 }, L.t));
+    });
+    legend($("p-legend"), [["--fl-mud", "Mud"], ["--fl-spacer", "Spacer"], ["--fl-lead", "Lead"], ["--fl-tail", "Tail"], ["--fl-disp", "Displacement fluid"], ["--fl-steel", "Casing"]]);
+  }
+
+  function csvPrimary(r) {
+    var L = [["section", "item", "value", "unit"]];
+    function a(s, i, v, u) { L.push([s, i, v === null ? "" : String(v), u]); }
+    var c = r.capacities;
+    ["casing_inside", "cased_annulus", "open_hole_annulus", "open_hole_annulus_with_excess"].forEach(function (k) { a("capacity", k, c[k].bbl_ft, "bbl/ft"); a("capacity", k, c[k].ft3_ft, "ft3/ft"); });
+    r.intervals.forEach(function (iv) { a("interval", iv.fluid + " " + iv.geometry + " " + iv.top_md_ft + "-" + iv.bottom_md_ft + " ft", iv.vol_bbl, "bbl"); });
+    a("shoe_track", "volume", r.shoe_track.vol_bbl, "bbl");
+    ["lead", "tail"].forEach(function (k) { a(k, "volume", r[k].vol_bbl, "bbl"); a(k, "volume", r[k].vol_ft3, "ft3"); a(k, "sacks", r[k].sacks, "sk"); a(k, "mix_water", r[k].mix_water_bbl, "bbl"); });
+    a("displacement", "volume", r.displacement.vol_bbl, "bbl"); a("displacement", "strokes", r.displacement.strokes, "stk");
+    a("pressure", "annulus_at_shoe", r.pressure.annulus_psi, "psi"); a("pressure", "annulus_at_float_collar", r.pressure.annulus_at_fc_psi, "psi");
+    a("pressure", "inside_at_float_collar", r.pressure.inside_at_fc_psi, "psi"); a("pressure", "differential_at_bump", r.pressure.differential_psi, "psi");
+    a("pressure", "shoe_emw", r.pressure.shoe_emw_ppg, "ppg"); a("pressure", "frac_emw", r.pressure.frac_emw_ppg, "ppg");
+    a("pressure", "frac_exceeded", r.pressure.frac_exceeded ? "yes" : "no", "");
+    return L.map(function (row) { return row.map(C.csvCell).join(","); }).join("\n") + "\n";
+  }
+
+  // ---- plug ----
+  function renderPlug(r, inp) {
+    var tiles = $("b-tiles"); clear(tiles);
+    tiles.appendChild(tile("Slurry", fmt(r.slurry.vol_bbl, 1), "bbl", fmt(r.slurry.vol_ft3, 0) + " ft3, " + fmt(r.slurry.sacks, 0) + " sk" + (r.slurry.mix_water_bbl === null ? "" : ", water " + fmt(r.slurry.mix_water_bbl, 1) + " bbl")));
+    tiles.appendChild(tile("Balanced height, pipe in", fmt(r.column_height_ft, 0), "ft", "top at " + fmt(r.top_with_pipe_in_md_ft, 0) + " ft MD"));
+    tiles.appendChild(tile("Spacer behind", fmt(r.spacer_behind.vol_bbl, 2), "bbl", "balances " + fmt(r.spacer_ahead.vol_bbl, 1) + " bbl ahead"));
+    tiles.appendChild(tile("Displacement", fmt(r.displacement.vol_bbl, 1), "bbl", r.displacement.strokes === null ? "enter pump output for strokes" : fmt(r.displacement.strokes, 0) + " strokes", true));
+    tiles.appendChild(tile("Top after pulling pipe", fmt(r.top_after_pull_gauge_md_ft, 0), "ft MD", "gauge hole; design top " + fmt(r.top_after_pull_design_md_ft, 0)));
+    var chips = $("b-chips"); clear(chips);
+    var bal = Math.abs(r.cement_height_inside_ft - r.cement_height_outside_ft) < 1e-6;
+    chips.appendChild(chip(bal ? "good" : "warn", bal ? "Balanced: equal height inside and outside" : "Not balanced"));
+    r.warnings.forEach(function (w) { chips.appendChild(chip("warn", w.message)); });
+
+    var host = $("b-tables"); clear(host);
+    var c = r.capacities;
+    host.appendChild(table("Capacities", [["Geometry"], ["bbl/ft", 1], ["ft3/ft", 1]], [
+      ["Hole (or casing ID)", fmt(c.hole.bbl_ft, 5), fmt(c.hole.ft3_ft, 4)],
+      ["Pipe inside", fmt(c.pipe_inside.bbl_ft, 5), fmt(c.pipe_inside.ft3_ft, 4)],
+      ["Annulus, hole x pipe OD", fmt(c.annulus.bbl_ft, 5), fmt(c.annulus.ft3_ft, 4)]
+    ]));
+    host.appendChild(table("Placement", [["Item"], ["Value", 1], ["Unit"]], [
+      ["Slurry volume", fmt(r.slurry.vol_bbl, 2), "bbl"],
+      ["Slurry volume", fmt(r.slurry.vol_ft3, 1), "ft3"],
+      ["Sacks (rounded up)", fmt(r.slurry.sacks, 0), "sk"],
+      ["Mix water", r.slurry.mix_water_bbl === null ? "n/a" : fmt(r.slurry.mix_water_bbl, 2), "bbl"],
+      ["Cement height inside pipe", fmt(r.cement_height_inside_ft, 1), "ft"],
+      ["Cement height in annulus", fmt(r.cement_height_outside_ft, 1), "ft"],
+      ["Top of cement, pipe in", fmt(r.top_with_pipe_in_md_ft, 1), "ft MD"],
+      ["Spacer ahead", fmt(r.spacer_ahead.vol_bbl, 2), "bbl"],
+      ["Spacer ahead height, annulus", fmt(r.spacer_ahead.height_annulus_ft, 1), "ft"],
+      ["Spacer behind", fmt(r.spacer_behind.vol_bbl, 2), "bbl"],
+      ["Spacer behind height, pipe", fmt(r.spacer_behind.height_pipe_ft, 1), "ft"],
+      ["Displacement", fmt(r.displacement.vol_bbl, 2), "bbl"],
+      ["Strokes", r.displacement.strokes === null ? "n/a" : fmt(r.displacement.strokes, 0), "stk"],
+      ["Top after pulling pipe, gauge hole", fmt(r.top_after_pull_gauge_md_ft, 1), "ft MD"],
+      ["Design top (bottom minus plug length)", fmt(r.top_after_pull_design_md_ft, 1), "ft MD"]
+    ]));
+    drawPlug(r, inp);
+  }
+
+  function drawPlug(r, inp) {
+    var svg = $("b-svg"); var title = svg.firstChild;
+    clear(svg); svg.appendChild(title);
+    var bottom = r.pipe_end_md_ft, h = r.column_height_ft, hs = r.spacer_ahead.height_annulus_ft;
+    var topC = r.top_with_pipe_in_md_ft;
+    var hAfterSp = (r.spacer_ahead.vol_bbl + r.spacer_behind.vol_bbl) / r.capacities.hole.bbl_ft;
+    var hi = Math.min(topC - hs, r.top_after_pull_gauge_md_ft - hAfterSp, r.top_after_pull_design_md_ft);
+    var span = bottom - hi;
+    var w0 = Math.max(0, hi - 0.35 * span), w1 = bottom + 0.12 * span;
+    var top = 46, bot = 400, H = bot - top;
+    function y(md) { return top + (md - w0) / (w1 - w0) * H; }
+    function band(x0, x1, a, b, v) { var y0 = y(Math.max(a, w0)), y1 = y(Math.min(b, w1)); if (y1 - y0 <= 0) return; svg.appendChild(sv("rect", { x: x0, y: y0, width: x1 - x0, height: y1 - y0, fill: "var(" + v + ")" })); }
+    // Panel A: pipe in. hole x 20..120, pipe walls 60..64 and 76..80, inside 64..76
+    function hole(x0, x1) {
+      band(x0, x1, bottom, w1, "--fl-base");
+      svg.appendChild(sv("line", { x1: x0 - 0.5, y1: top, x2: x0 - 0.5, y2: bot, stroke: "var(--muted)" }));
+      svg.appendChild(sv("line", { x1: x1 + 0.5, y1: top, x2: x1 + 0.5, y2: bot, stroke: "var(--muted)" }));
+    }
+    var A = [20, 110], pL = [55, 59], pIn = [59, 71], pR = [71, 75];
+    band(A[0], A[1], w0, bottom, "--fl-mud");
+    band(A[0], pL[0], topC - hs, topC, "--fl-spacer"); band(pR[1], A[1], topC - hs, topC, "--fl-spacer");
+    band(A[0], pL[0], topC, bottom, "--fl-tail"); band(pR[1], A[1], topC, bottom, "--fl-tail");
+    band(pIn[0], pIn[1], w0, topC - r.spacer_behind.height_pipe_ft, "--fl-disp");
+    band(pIn[0], pIn[1], topC - r.spacer_behind.height_pipe_ft, topC, "--fl-spacer");
+    band(pIn[0], pIn[1], topC, bottom, "--fl-tail");
+    hole(A[0], A[1]);
+    svg.appendChild(sv("rect", { x: pL[0], y: top, width: 4, height: y(bottom) - top, fill: "var(--fl-steel)" }));
+    svg.appendChild(sv("rect", { x: pR[0], y: top, width: 4, height: y(bottom) - top, fill: "var(--fl-steel)" }));
+    svg.appendChild(sv("text", { x: A[0], y: 20, class: "ttl" }, "Pipe in, balanced"));
+    // Panel B: pipe out. hole x 230..330
+    var B = [240, 330], topA = r.top_after_pull_gauge_md_ft;
+    band(B[0], B[1], w0, bottom, "--fl-mud");
+    band(B[0], B[1], topA - hAfterSp, topA, "--fl-spacer");
+    band(B[0], B[1], topA, bottom, "--fl-tail");
+    hole(B[0], B[1]);
+    svg.appendChild(sv("text", { x: B[0], y: 20, class: "ttl" }, "After pulling pipe"));
+    // window markers
+    if (w0 > 0) { svg.appendChild(sv("text", { x: 4, y: top - 6 }, "Window from " + fmt(w0, 0) + " ft MD")); }
+    svg.appendChild(sv("text", { x: 4, y: bot + 18 }, "Depth window only. Not to scale horizontally."));
+    function labels(items, x0) {
+      placeLabels(items, top + 6, bot - 4, 14).forEach(function (L) {
+        svg.appendChild(sv("path", { d: "M" + x0 + " " + L.y + " L" + (x0 + 8) + " " + L.y + " L" + (x0 + 14) + " " + L.ly + " L" + (x0 + 18) + " " + L.ly, class: "lead-line", fill: "none" }));
+        svg.appendChild(sv("text", { x: x0 + 20, y: L.ly + 4 }, L.t));
+      });
+    }
+    labels([{ y: y(topC), t: "TOC " + fmt(topC, 0) }, { y: y(bottom), t: "End " + fmt(bottom, 0) }, { y: y(topC - hs), t: "Spacer " + fmt(topC - hs, 0) }], A[1] + 2);
+    labels([{ y: y(topA), t: "TOC " + fmt(topA, 0) }, { y: y(bottom), t: "Base " + fmt(bottom, 0) }], B[1] + 2);
+    legend($("b-legend"), [["--fl-mud", "Mud"], ["--fl-spacer", "Spacer"], ["--fl-tail", "Cement slurry"], ["--fl-disp", "Displacement fluid"], ["--fl-base", "Base below plug"], ["--fl-steel", "Pipe"]]);
+  }
+
+  function csvPlug(r) {
+    var L = [["item", "value", "unit"]];
+    function a(i, v, u) { L.push([i, v === null ? "" : String(v), u]); }
+    a("capacity_hole", r.capacities.hole.bbl_ft, "bbl/ft"); a("capacity_pipe_inside", r.capacities.pipe_inside.bbl_ft, "bbl/ft"); a("capacity_annulus", r.capacities.annulus.bbl_ft, "bbl/ft");
+    a("slurry_volume", r.slurry.vol_bbl, "bbl"); a("slurry_volume", r.slurry.vol_ft3, "ft3"); a("sacks", r.slurry.sacks, "sk"); a("mix_water", r.slurry.mix_water_bbl, "bbl");
+    a("balanced_height_pipe_in", r.column_height_ft, "ft"); a("top_with_pipe_in", r.top_with_pipe_in_md_ft, "ft MD");
+    a("spacer_ahead", r.spacer_ahead.vol_bbl, "bbl"); a("spacer_behind", r.spacer_behind.vol_bbl, "bbl");
+    a("displacement", r.displacement.vol_bbl, "bbl"); a("strokes", r.displacement.strokes, "stk");
+    a("top_after_pull_gauge", r.top_after_pull_gauge_md_ft, "ft MD"); a("top_after_pull_design", r.top_after_pull_design_md_ft, "ft MD");
+    return L.map(function (row) { return row.map(C.csvCell).join(","); }).join("\n") + "\n";
+  }
+
+  // ---- tabs ----
+  var MODES = { primary: new Mode("p", "primary", P_GROUPS, C.EXAMPLE_PRIMARY), plug: new Mode("b", "plug", B_GROUPS, C.EXAMPLE_PLUG) };
+  var TABS = [["primary", "tab-primary", "panel-primary"], ["plug", "tab-plug", "panel-plug"]];
+  function selectTab(name, focus) {
+    TABS.forEach(function (t) {
+      var on = t[0] === name, b = $(t[1]);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+      $(t[2]).hidden = !on;
+      if (on && focus) b.focus();
+    });
+    store("tab", name);
+  }
+  TABS.forEach(function (t, i) {
+    var b = $(t[1]);
+    b.addEventListener("click", function () { selectTab(t[0]); });
+    b.addEventListener("keydown", function (e) {
+      var j = null;
+      if (e.key === "ArrowRight") j = (i + 1) % TABS.length;
+      else if (e.key === "ArrowLeft") j = (i + TABS.length - 1) % TABS.length;
+      else if (e.key === "Home") j = 0; else if (e.key === "End") j = TABS.length - 1;
+      if (j !== null) { e.preventDefault(); selectTab(TABS[j][0], true); }
+    });
+  });
+
+  MODES.primary.build(); MODES.plug.build();
+  MODES.primary.fill(C.EXAMPLE_PRIMARY, true);
+  MODES.plug.fill(C.EXAMPLE_PLUG, true);
+  var saved = load("tab");
+  selectTab(saved === "plug" ? "plug" : "primary");
+})();
+</script>

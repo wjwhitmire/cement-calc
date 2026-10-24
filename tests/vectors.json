@@ -1,0 +1,4398 @@
+{
+ "cases": [
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_example",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5932.540969506178,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5934.0177695061775,
+     "differential_psi": 1472.812969506178,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 3.3253303626461754,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 11.174669637353825,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 9.0,
+    "lead_water_gal_sk": 30.0,
+    "lead_yield_ft3_sk": 5.5,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_unusual_lead",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 9.0,
+     "mix_water_bbl": 230.71428571428572,
+     "sacks": 323,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5237.040969506178,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 9.0,
+       "fluid": "lead",
+       "psi": 2503.7999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5238.5177695061775,
+     "differential_psi": 777.312969506178,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 4.635064009336343,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 9.864935990663657,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": [
+     {
+      "code": "unusual_density",
+      "message": "Lead density 9 ppg is outside the usual 11 to 19 ppg. Fine for a foamed or specially weighted slurry; otherwise check it."
+     },
+     {
+      "code": "unusual_yield",
+      "message": "Lead yield 5.5 ft3/sk is outside the usual 0.9 to 4 ft3/sk. Check it against the lab report."
+     },
+     {
+      "code": "unusual_water",
+      "message": "Lead mix water 30 gal/sk is outside the usual 3.5 to 25 gal/sk. Check it against the lab report."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 6.0,
+    "oh_excess_pct": 150,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 1.2,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_unusual_fluids",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.1124744997085681,
+      "ft3_ft": 0.6314993260637265
+     }
+    },
+    "displacement": {
+     "strokes": 289.0522204520433,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.1124744997085681,
+      "excess_pct": 150.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 562.3724985428405,
+      "vol_ft3": 3157.4966303186325
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.1124744997085681,
+      "excess_pct": 150.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 562.3724985428405,
+      "vol_ft3": 3157.4966303186325
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 451.47142857142853,
+     "sacks": 1326,
+     "vol_bbl": 585.5934160676122,
+     "vol_ft3": 3287.8727938532156
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5137.84723168726,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 6.0,
+       "fluid": "mud",
+       "psi": 1135.2767683127393,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5139.324031687261,
+     "differential_psi": 678.1192316872603,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 4.821861099145687,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 9.678138900854313,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 562.3724985428405,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 344.54761904761904,
+     "sacks": 2495,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 564.2323519720226,
+     "vol_ft3": 3167.938963382118
+    },
+    "total_cement_bbl": 1149.8257680396348,
+    "warnings": [
+     {
+      "code": "unusual_density",
+      "message": "Mud density 6 ppg is outside the usual 6.5 to 20 ppg. Check it."
+     },
+     {
+      "code": "unusual_excess",
+      "message": "Open hole excess of 150 percent is above 100 percent. Use a caliper if the hole is that washed out."
+     },
+     {
+      "code": "unusual_pump",
+      "message": "Pump output 1.2 bbl/stk is outside the usual 0.02 to 0.5 bbl/stk. Check the units."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 6.0,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_tight_clearance",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.00558577812317855,
+      "ft3_ft": 0.03136190985039829
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.007261511560132115,
+      "ft3_ft": 0.040770482805517774
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.007261511560132115,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 36.307557800660575,
+      "vol_ft3": 203.85241402758888
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.007261511560132115,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 36.307557800660575,
+      "vol_ft3": 203.85241402758888
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 45.964285714285715,
+     "sacks": 135,
+     "vol_bbl": 59.5284753254323,
+     "vol_ft3": 334.2285775621722
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5932.540969506178,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5934.0177695061775,
+     "differential_psi": 1472.812969506178,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 3.3253303626461754,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 11.174669637353825,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 36.307557800660575,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 23.338095238095235,
+     "sacks": 169,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 38.16741122984262,
+     "vol_ft3": 214.29474709107438
+    },
+    "total_cement_bbl": 97.69588655527491,
+    "warnings": [
+     {
+      "code": "tight_clearance",
+      "message": "Open hole is only 0.500 in larger than the casing OD (under 0.75 in). Running casing and placing cement are doubtful."
+     }
+    ]
+   }
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 27.0,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_err_slurry_density"
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 0.3,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_err_yield_low"
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 10.0,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_err_water_over_yield"
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 3.0,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "plaus_err_mud_density"
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_vertical",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9389.344969506177,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3289.0,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9448.416969506177,
+     "differential_psi": 2872.2889695061767,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.3866449108895154,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 12.113355089110485,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 0,
+    "prev_shoe_md_ft": 0,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_no_prev_casing",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.0,
+      "ft3_ft": 0.0
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 321.6770691665048,
+      "vol_ft3": 1806.0880725422578
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 248.20714285714288,
+     "sacks": 729,
+     "vol_bbl": 321.6770691665048,
+     "vol_ft3": 1806.0880725422578
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9372.742510121458,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3816.084293574172,
+       "bottom_tvd_ft": 3816.084293574172,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 2024.051109311741,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 426.76340080971664,
+       "top_md_ft": 3816.084293574172,
+       "top_tvd_ft": 3816.084293574172
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3289.0,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9431.814510121458,
+     "differential_psi": 2855.686510121457,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.4079301152289005,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 12.0920698847711,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3816.084293574172,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 615.9706218379639,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 11000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_tail_into_casing",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 5500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 255.43009277248888,
+      "vol_ft3": 1434.137798880416
+     },
+     {
+      "bottom_md_ft": 11000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "tail",
+      "geometry": "cased",
+      "length_ft": 1000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 46.441835049543435,
+      "vol_ft3": 260.7523270691666
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 4000.0,
+      "top_md_ft": 11000.0,
+      "vol_bbl": 233.94695939382166,
+      "vol_ft3": 1313.518598212551
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 197.1357142857143,
+     "sacks": 579,
+     "vol_bbl": 255.43009277248888,
+     "vol_ft3": 1434.137798880416
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9389.344969506177,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3289.0,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9448.416969506177,
+     "differential_psi": 2872.2889695061767,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.3866449108895154,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 12.113355089110485,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 280.3887944433651,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 172.34285714285713,
+     "sacks": 1248,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 282.24864787254717,
+     "vol_ft3": 1584.7132583452035
+    },
+    "total_cement_bbl": 537.678740645036,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 20,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 0,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_lead_at_surface",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 5000.0,
+      "top_md_ft": 0.0,
+      "vol_bbl": 232.20917524771716,
+      "vol_ft3": 1303.7616353458327
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 404.4857142857143,
+     "sacks": 1188,
+     "vol_bbl": 524.6428744899943,
+     "vol_ft3": 2945.659883111522
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9612.928,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 0.0,
+       "bottom_tvd_ft": 0.0,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 0.0,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 0.0,
+       "bottom_tvd_ft": 0.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 0.0,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 5980.0,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9672.0,
+     "differential_psi": 3095.8719999999994,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.0999999999999996,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 12.4,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 0.0,
+     "top_md_ft": 0.0,
+     "truncated": true,
+     "vol_bbl": 20.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 818.9364271614534,
+    "warnings": [
+     {
+      "code": "spacer_above_surface",
+      "message": "Spacer volume is more than the annulus above the top of lead. Pressures assume spacer to surface."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 10000,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_no_lead",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 0.0,
+     "sacks": 0,
+     "vol_bbl": 0.0,
+     "vol_ft3": 0.0
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9000.942510121457,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 9316.084293574173,
+       "bottom_tvd_ft": 9316.084293574173,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 4941.251109311741,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 426.7634008097161,
+       "top_md_ft": 9316.084293574173,
+       "top_tvd_ft": 9316.084293574173
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 0.0,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9060.014510121457,
+     "differential_psi": 2483.886510121456,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.884596781895569,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 11.615403218104431,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 10000.0,
+     "top_md_ft": 9316.084293574173,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 294.2935526714591,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_no_fc_tvd",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5929.740956706179,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5934.0177695061775,
+     "differential_psi": 1471.669302306178,
+     "float_collar_tvd_ft": 10206.208,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 3.3253303626461754,
+     "inside_at_fc_psi": 4458.071654400001,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10206.208,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4458.071654400001,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 4.276812799999602,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10206.208
+      }
+     ],
+     "inside_psi": 4462.3484672,
+     "shoe_emw_ppg": 11.174669637353825,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 150,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_spacer_crosses_shoe",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 6154.237635648168,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 1270.1534652973487,
+       "bottom_tvd_ft": 1270.1534652973487,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 673.6893979937138,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 2015.4242376544544,
+       "top_md_ft": 1270.1534652973487,
+       "top_tvd_ft": 1270.1534652973487
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 6155.714435648168,
+     "differential_psi": 1694.5096356481681,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.9078413863626356,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 11.592158613637364,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 1270.1534652973487,
+     "truncated": false,
+     "vol_bbl": 150.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 900,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_spacer_to_surface",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9729.928,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 0.0,
+       "bottom_tvd_ft": 0.0,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 0.0,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 2808.0,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3289.0,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9789.0,
+     "differential_psi": 3212.8719999999994,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 1.9499999999999993,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 12.55,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 0.0,
+     "truncated": true,
+     "vol_bbl": 900.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": [
+     {
+      "code": "spacer_above_surface",
+      "message": "Spacer volume is more than the annulus above the top of lead. Pressures assume spacer to surface."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 11.0,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_frac_exceeded",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5932.540969506178,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5934.0177695061775,
+     "differential_psi": 1472.812969506178,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 11.0,
+     "frac_exceeded": true,
+     "frac_margin_ppg": -0.17466963735382457,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 11.174669637353825,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": [
+     {
+      "code": "frac_exceeded",
+      "message": "Static hydrostatic at the shoe exceeds the entered fracture gradient."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_no_pump",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": null,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5932.540969506178,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 9850.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3199.2999999999997,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 267.3008,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 9850.0
+      }
+     ],
+     "annulus_psi": 5934.0177695061775,
+     "differential_psi": 1472.812969506178,
+     "float_collar_tvd_ft": 10210.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 3.3253303626461754,
+     "inside_at_fc_psi": 4459.728,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10210.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4459.728,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 1.4768,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10210.0
+      }
+     ],
+     "inside_psi": 4461.2048,
+     "shoe_emw_ppg": 11.174669637353825,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 16.0,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_heavy_disp",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 5000.0,
+      "cap_bbl_ft": 0.04644183504954343,
+      "excess_pct": 0.0,
+      "fluid": "lead",
+      "geometry": "cased",
+      "length_ft": 500.0,
+      "top_md_ft": 4500.0,
+      "vol_bbl": 23.220917524771718,
+      "vol_ft3": 130.3761635345833
+     },
+     {
+      "bottom_md_ft": 10000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 5000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 5000.0,
+      "top_md_ft": 10000.0,
+      "vol_bbl": 292.43369924227704,
+      "vol_ft3": 1641.8982477656887
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 243.4404761904762,
+     "sacks": 715,
+     "vol_bbl": 315.65461676704876,
+     "vol_ft3": 1772.274411300272
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 9389.344969506177,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 3638.7075907459594,
+       "bottom_tvd_ft": 3638.7075907459594,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 1929.9705061316567,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 4500.0,
+       "bottom_tvd_ft": 4500.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 537.4464633745214,
+       "top_md_ft": 3638.7075907459594,
+       "top_tvd_ft": 3638.7075907459594
+      },
+      {
+       "bottom_md_ft": 10000.0,
+       "bottom_tvd_ft": 10000.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3289.0,
+       "top_md_ft": 4500.0,
+       "top_tvd_ft": 4500.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 3691.9999999999995,
+       "top_md_ft": 10000.0,
+       "top_tvd_ft": 10000.0
+      }
+     ],
+     "annulus_psi": 9448.416969506177,
+     "differential_psi": -3024.0950304938215,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 2.3866449108895154,
+     "inside_at_fc_psi": 12413.439999999999,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 16.0,
+       "fluid": "displacement",
+       "psi": 12413.439999999999,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 12472.511999999999,
+     "shoe_emw_ppg": 12.113355089110485,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 4500.0,
+     "top_md_ft": 3638.7075907459594,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 292.43369924227704,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 179.79999999999998,
+     "sacks": 1302,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 294.2935526714591,
+     "vol_ft3": 1652.3405808291743
+    },
+    "total_cement_bbl": 609.9481694385079,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 9000,
+    "top_tail_md_ft": 14960,
+    "tvd_equals_md": true,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "primary_tail_below_fc",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 14960.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5960.0,
+      "top_md_ft": 9000.0,
+      "vol_bbl": 348.58096949679424,
+      "vol_ft3": 1957.142711336701
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 40.0,
+      "top_md_ft": 14960.0,
+      "vol_bbl": 2.3394695939382166,
+      "vol_ft3": 13.135185982125511
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 268.9761904761905,
+     "sacks": 790,
+     "vol_bbl": 348.58096949679424,
+     "vol_ft3": 1957.142711336701
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 8377.774510121457,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 8316.084293574173,
+       "bottom_tvd_ft": 8316.084293574173,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 4410.851109311741,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 9000.0,
+       "bottom_tvd_ft": 9000.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 426.7634008097161,
+       "top_md_ft": 8316.084293574173,
+       "top_tvd_ft": 8316.084293574173
+      },
+      {
+       "bottom_md_ft": 14960.0,
+       "bottom_tvd_ft": 14960.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 3564.08,
+       "top_md_ft": 9000.0,
+       "top_tvd_ft": 9000.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 29.535999999999998,
+       "top_md_ft": 14960.0,
+       "top_tvd_ft": 14960.0
+      }
+     ],
+     "annulus_psi": 8431.230510121457,
+     "differential_psi": 1860.7185101214563,
+     "float_collar_tvd_ft": 14920.0,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 3.6907301152289005,
+     "inside_at_fc_psi": 6517.0560000000005,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 14920.0,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 6517.0560000000005,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 15000.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 59.071999999999996,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 14920.0
+      }
+     ],
+     "inside_psi": 6576.128000000001,
+     "shoe_emw_ppg": 10.8092698847711,
+     "shoe_tvd_ft": 15000.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 9000.0,
+     "top_md_ft": 8316.084293574173,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 2.3394695939382166,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 2.623809523809524,
+     "sacks": 19,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 4.1993230231202645,
+     "vol_ft3": 23.577519045611037
+    },
+    "total_cement_bbl": 352.7802925199145,
+    "warnings": [
+     {
+      "code": "tail_top_below_float_collar",
+      "message": "Top of tail is below the float collar. Most of the tail is in the shoe track."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 9000,
+    "top_tail_md_ft": 14960,
+    "tvd_equals_md": false,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 8800,
+    "tvd_top_tail_ft": 10211
+   },
+   "name": "primary_tail_below_fc_deviated",
+   "result": {
+    "capacities": {
+     "cased_annulus": {
+      "bbl_ft": 0.04644183504954343,
+      "ft3_ft": 0.26075232706916657
+     },
+     "casing_inside": {
+      "bbl_ft": 0.0232481678647756,
+      "ft3_ft": 0.1305291632935691
+     },
+     "open_hole_annulus": {
+      "bbl_ft": 0.04498979988342724,
+      "ft3_ft": 0.2525997304254906
+     },
+     "open_hole_annulus_with_excess": {
+      "bbl_ft": 0.05848673984845541,
+      "ft3_ft": 0.32837964955313775
+     }
+    },
+    "displacement": {
+     "strokes": 3400.6143582593327,
+     "vol_bbl": 346.8626645424519
+    },
+    "intervals": [
+     {
+      "bottom_md_ft": 14960.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "lead",
+      "geometry": "open",
+      "length_ft": 5960.0,
+      "top_md_ft": 9000.0,
+      "vol_bbl": 348.58096949679424,
+      "vol_ft3": 1957.142711336701
+     },
+     {
+      "bottom_md_ft": 15000.0,
+      "cap_bbl_ft": 0.05848673984845541,
+      "excess_pct": 30.0,
+      "fluid": "tail",
+      "geometry": "open",
+      "length_ft": 40.0,
+      "top_md_ft": 14960.0,
+      "vol_bbl": 2.3394695939382166,
+      "vol_ft3": 13.135185982125511
+     }
+    ],
+    "lead": {
+     "density_ppg": 11.5,
+     "mix_water_bbl": 268.9761904761905,
+     "sacks": 790,
+     "vol_bbl": 348.58096949679424,
+     "vol_ft3": 1957.142711336701
+    },
+    "mode": "primary",
+    "pressure": {
+     "annulus_at_fc_psi": 5568.227025854776,
+     "annulus_columns": [
+      {
+       "bottom_md_ft": 8316.084293574173,
+       "bottom_tvd_ft": 8131.282420383635,
+       "density_ppg": 10.2,
+       "fluid": "mud",
+       "psi": 4312.83219577148,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 9000.0,
+       "bottom_tvd_ft": 8800.0,
+       "density_ppg": 12.0,
+       "fluid": "spacer",
+       "psi": 417.27976968061154,
+       "top_md_ft": 8316.084293574173,
+       "top_tvd_ft": 8131.282420383635
+      },
+      {
+       "bottom_md_ft": 14960.0,
+       "bottom_tvd_ft": 10211.0,
+       "density_ppg": 11.5,
+       "fluid": "lead",
+       "psi": 843.778,
+       "top_md_ft": 9000.0,
+       "top_tvd_ft": 8800.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 0.7384,
+       "top_md_ft": 14960.0,
+       "top_tvd_ft": 10211.0
+      }
+     ],
+     "annulus_psi": 5574.628365452091,
+     "differential_psi": 1112.198633908467,
+     "float_collar_tvd_ft": 10201.530201342282,
+     "frac_emw_ppg": 14.5,
+     "frac_exceeded": false,
+     "frac_margin_ppg": 4.002115976957555,
+     "inside_at_fc_psi": 4456.028391946309,
+     "inside_columns": [
+      {
+       "bottom_md_ft": 14920.0,
+       "bottom_tvd_ft": 10201.530201342282,
+       "density_ppg": 8.4,
+       "fluid": "displacement",
+       "psi": 4456.028391946309,
+       "top_md_ft": 0.0,
+       "top_tvd_ft": 0.0
+      },
+      {
+       "bottom_md_ft": 15000.0,
+       "bottom_tvd_ft": 10212.0,
+       "density_ppg": 14.2,
+       "fluid": "tail",
+       "psi": 7.730899328858636,
+       "top_md_ft": 14920.0,
+       "top_tvd_ft": 10201.530201342282
+      }
+     ],
+     "inside_psi": 4463.759291275168,
+     "shoe_emw_ppg": 10.497884023042445,
+     "shoe_tvd_ft": 10212.0
+    },
+    "shoe_track": {
+     "length_ft": 80.0,
+     "vol_bbl": 1.8598534291820479,
+     "vol_ft3": 10.442333063485526
+    },
+    "spacer": {
+     "bottom_md_ft": 9000.0,
+     "top_md_ft": 8316.084293574173,
+     "truncated": false,
+     "vol_bbl": 40.0
+    },
+    "tail": {
+     "annulus_bbl": 2.3394695939382166,
+     "density_ppg": 14.2,
+     "mix_water_bbl": 2.623809523809524,
+     "sacks": 19,
+     "shoe_track_bbl": 1.8598534291820479,
+     "vol_bbl": 4.1993230231202645,
+     "vol_ft3": 23.577519045611037
+    },
+    "total_cement_bbl": 352.7802925199145,
+    "warnings": [
+     {
+      "code": "tail_top_below_float_collar",
+      "message": "Top of tail is below the float collar. Most of the tail is in the shoe track."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "plug_example",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.062475714008160085,
+      "ft3_ft": 0.3507761438702156
+     },
+     "hole": {
+      "bbl_ft": 0.07437585000971439,
+      "ft3_ft": 0.41759064746454244
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.007421503788614725,
+      "ft3_ft": 0.04166877517155624
+     }
+    },
+    "cement_height_inside_ft": 638.4447251616897,
+    "cement_height_outside_ft": 638.4447251616892,
+    "column_height_ft": 638.4447251616892,
+    "displacement": {
+     "strokes": 596.7393328884007,
+     "vol_bbl": 60.86741195461687
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 9000.0,
+    "slurry": {
+     "mix_water_bbl": 24.264285714285712,
+     "sacks": 237,
+     "vol_bbl": 44.62551000582863,
+     "vol_ft3": 250.55438847872543
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 160.0621963070943,
+     "vol_bbl": 10.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 160.0621963070943,
+     "vol_bbl": 1.1879021963070941
+    },
+    "top_after_pull_design_md_ft": 8500.0,
+    "top_after_pull_gauge_md_ft": 8400.0,
+    "top_with_pipe_in_md_ft": 8361.55527483831,
+    "warnings": []
+   }
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 0.55,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "plaus_err_plug_water"
+  },
+  {
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 4.5,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "plaus_plug_unusual_yield",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.062475714008160085,
+      "ft3_ft": 0.3507761438702156
+     },
+     "hole": {
+      "bbl_ft": 0.07437585000971439,
+      "ft3_ft": 0.41759064746454244
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.007421503788614725,
+      "ft3_ft": 0.04166877517155624
+     }
+    },
+    "cement_height_inside_ft": 638.4447251616897,
+    "cement_height_outside_ft": 638.4447251616892,
+    "column_height_ft": 638.4447251616892,
+    "displacement": {
+     "strokes": 596.7393328884007,
+     "vol_bbl": 60.86741195461687
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 9000.0,
+    "slurry": {
+     "mix_water_bbl": 5.7333333333333325,
+     "sacks": 56,
+     "vol_bbl": 44.62551000582863,
+     "vol_ft3": 250.55438847872543
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 160.0621963070943,
+     "vol_bbl": 10.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 160.0621963070943,
+     "vol_bbl": 1.1879021963070941
+    },
+    "top_after_pull_design_md_ft": 8500.0,
+    "top_after_pull_gauge_md_ft": 8400.0,
+    "top_with_pipe_in_md_ft": 8361.55527483831,
+    "warnings": [
+     {
+      "code": "unusual_yield",
+      "message": "Slurry yield 4.5 ft3/sk is outside the usual 0.9 to 4 ft3/sk. Check it against the lab report."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "excess_pct": 0,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 0,
+    "underdisplace_bbl": 0
+   },
+   "name": "plug_no_excess_no_spacer",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.062475714008160085,
+      "ft3_ft": 0.3507761438702156
+     },
+     "hole": {
+      "bbl_ft": 0.07437585000971439,
+      "ft3_ft": 0.41759064746454244
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.007421503788614725,
+      "ft3_ft": 0.04166877517155624
+     }
+    },
+    "cement_height_inside_ft": 532.0372709680747,
+    "cement_height_outside_ft": 532.0372709680744,
+    "column_height_ft": 532.0372709680744,
+    "displacement": {
+     "strokes": 616.1276223074385,
+     "vol_bbl": 62.84501747535872
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 9000.0,
+    "slurry": {
+     "mix_water_bbl": 20.169047619047618,
+     "sacks": 197,
+     "vol_bbl": 37.18792500485719,
+     "vol_ft3": 208.79532373227119
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 0.0,
+     "vol_bbl": 0.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 0.0,
+     "vol_bbl": 0.0
+    },
+    "top_after_pull_design_md_ft": 8500.0,
+    "top_after_pull_gauge_md_ft": 8500.0,
+    "top_with_pipe_in_md_ft": 8467.962729031926,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "excess_pct": 0,
+    "hole_id_in": 6.276,
+    "mode": "plug",
+    "pipe_id_in": 2.441,
+    "pipe_od_in": 2.875,
+    "plug_bottom_md_ft": 12000,
+    "plug_length_ft": 300,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "plug_in_casing",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.030233680784923247,
+      "ft3_ft": 0.16975002413503007
+     },
+     "hole": {
+      "bbl_ft": 0.03826323683699241,
+      "ft3_ft": 0.2148327695449776
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.005788304837769573,
+      "ft3_ft": 0.03249901634214104
+     }
+    },
+    "cement_height_inside_ft": 318.6656940939509,
+    "cement_height_outside_ft": 318.6656940939508,
+    "column_height_ft": 318.6656940939508,
+    "displacement": {
+     "strokes": 644.1235473434729,
+     "vol_bbl": 65.70060182903423
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 12000.0,
+    "slurry": {
+     "mix_water_bbl": 6.245238095238095,
+     "sacks": 61,
+     "vol_bbl": 11.478971051097723,
+     "vol_ft3": 64.44983086349328
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 330.7569485547635,
+     "vol_bbl": 10.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 330.7569485547635,
+     "vol_bbl": 1.9145220454454392
+    },
+    "top_after_pull_design_md_ft": 11700.0,
+    "top_after_pull_gauge_md_ft": 11700.0,
+    "top_with_pipe_in_md_ft": 11681.33430590605,
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 2.5
+   },
+   "name": "plug_underdisplaced",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.062475714008160085,
+      "ft3_ft": 0.3507761438702156
+     },
+     "hole": {
+      "bbl_ft": 0.07437585000971439,
+      "ft3_ft": 0.41759064746454244
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.007421503788614725,
+      "ft3_ft": 0.04166877517155624
+     }
+    },
+    "cement_height_inside_ft": 638.4447251616897,
+    "cement_height_outside_ft": 638.4447251616892,
+    "column_height_ft": 638.4447251616892,
+    "displacement": {
+     "strokes": 572.229528966832,
+     "vol_bbl": 58.36741195461687
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 9000.0,
+    "slurry": {
+     "mix_water_bbl": 24.264285714285712,
+     "sacks": 237,
+     "vol_bbl": 44.62551000582863,
+     "vol_ft3": 250.55438847872543
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 160.0621963070943,
+     "vol_bbl": 10.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 160.0621963070943,
+     "vol_bbl": 1.1879021963070941
+    },
+    "top_after_pull_design_md_ft": 8500.0,
+    "top_after_pull_gauge_md_ft": 8400.0,
+    "top_with_pipe_in_md_ft": 8361.55527483831,
+    "warnings": [
+     {
+      "code": "underdisplaced",
+      "message": "Under-displacement leaves fluid in the pipe above balance. The plug is no longer exactly balanced."
+     }
+    ]
+   }
+  },
+  {
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "plug_no_water_no_pump",
+   "result": {
+    "capacities": {
+     "annulus": {
+      "bbl_ft": 0.062475714008160085,
+      "ft3_ft": 0.3507761438702156
+     },
+     "hole": {
+      "bbl_ft": 0.07437585000971439,
+      "ft3_ft": 0.41759064746454244
+     },
+     "pipe_inside": {
+      "bbl_ft": 0.007421503788614725,
+      "ft3_ft": 0.04166877517155624
+     }
+    },
+    "cement_height_inside_ft": 638.4447251616897,
+    "cement_height_outside_ft": 638.4447251616892,
+    "column_height_ft": 638.4447251616892,
+    "displacement": {
+     "strokes": null,
+     "vol_bbl": 60.86741195461687
+    },
+    "mode": "plug",
+    "pipe_end_md_ft": 9000.0,
+    "slurry": {
+     "mix_water_bbl": null,
+     "sacks": 237,
+     "vol_bbl": 44.62551000582863,
+     "vol_ft3": 250.55438847872543
+    },
+    "spacer_ahead": {
+     "height_annulus_ft": 160.0621963070943,
+     "vol_bbl": 10.0
+    },
+    "spacer_behind": {
+     "height_pipe_ft": 160.0621963070943,
+     "vol_bbl": 1.1879021963070941
+    },
+    "top_after_pull_design_md_ft": 8500.0,
+    "top_after_pull_gauge_md_ft": 8400.0,
+    "top_with_pipe_in_md_ft": 8361.55527483831,
+    "warnings": []
+   }
+  },
+  {
+   "error": "pipe_od_ge_hole",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 8.75,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_casing_od_ge_hole"
+  },
+  {
+   "error": "casing_id_ge_od",
+   "input": {
+    "casing_id_in": 5.6,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_casing_id_ge_od"
+  },
+  {
+   "error": "float_collar_below_shoe",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 15010,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_float_collar_below_shoe"
+  },
+  {
+   "error": "tops_order",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 10500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_tops_order"
+  },
+  {
+   "error": "tops_order",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 15000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_tail_at_shoe"
+  },
+  {
+   "error": "prev_shoe_order",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 15000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_prev_shoe_order"
+  },
+  {
+   "error": "prev_id_le_casing_od",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 5.0,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_prev_id"
+  },
+  {
+   "error": "tvd_inconsistent",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 4000
+   },
+   "name": "err_tvd"
+  },
+  {
+   "error": "missing",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_missing_tvd"
+  },
+  {
+   "error": "bad_density",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 0,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_density"
+  },
+  {
+   "error": "bad_excess",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": -1,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_excess"
+  },
+  {
+   "error": "bad_yield",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 0,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_yield"
+  },
+  {
+   "error": "bad_frac",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 0,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": 15000,
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_frac"
+  },
+  {
+   "error": "not_number",
+   "input": {
+    "casing_id_in": 4.892,
+    "casing_od_in": 5.5,
+    "disp_density_ppg": 8.4,
+    "float_collar_md_ft": 14920,
+    "frac_emw_ppg": 14.5,
+    "lead_density_ppg": 11.5,
+    "lead_water_gal_sk": 14.3,
+    "lead_yield_ft3_sk": 2.48,
+    "mode": "primary",
+    "mud_density_ppg": 10.2,
+    "oh_excess_pct": 30,
+    "open_hole_in": 8.75,
+    "prev_casing_id_in": 8.835,
+    "prev_shoe_md_ft": 5000,
+    "pump_output_bbl_stk": 0.102,
+    "shoe_md_ft": "x",
+    "spacer_bbl": 40,
+    "spacer_density_ppg": 12.0,
+    "tail_density_ppg": 14.2,
+    "tail_water_gal_sk": 5.8,
+    "tail_yield_ft3_sk": 1.27,
+    "top_lead_md_ft": 4500,
+    "top_tail_md_ft": 10000,
+    "tvd_equals_md": false,
+    "tvd_float_collar_ft": 10210,
+    "tvd_shoe_ft": 10212,
+    "tvd_top_lead_ft": 4500,
+    "tvd_top_tail_ft": 9850
+   },
+   "name": "err_not_number"
+  },
+  {
+   "error": "pipe_od_ge_hole",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 8.75,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_plug_pipe_od_ge_hole"
+  },
+  {
+   "error": "pipe_id_ge_od",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 3.6,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_plug_pipe_id_ge_od"
+  },
+  {
+   "error": "bad_value",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 0,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_plug_length"
+  },
+  {
+   "error": "plug_above_surface",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 300,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1.06,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_plug_above_surface"
+  },
+  {
+   "error": "bad_yield",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 0,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_plug_yield"
+  },
+  {
+   "error": "bad_mode",
+   "input": {
+    "mode": "squeeze"
+   },
+   "name": "err_mode"
+  },
+  {
+   "error": "implausible",
+   "input": {
+    "excess_pct": 20,
+    "hole_id_in": 8.75,
+    "mode": "plug",
+    "pipe_id_in": 2.764,
+    "pipe_od_in": 3.5,
+    "plug_bottom_md_ft": 9000,
+    "plug_length_ft": 500,
+    "pump_output_bbl_stk": 0.102,
+    "slurry_water_gal_sk": 4.3,
+    "slurry_yield_ft3_sk": 1e-320,
+    "spacer_ahead_bbl": 10,
+    "underdisplace_bbl": 0
+   },
+   "name": "err_sacks_overflow"
+  }
+ ],
+ "generator": "tests/make_vectors.py",
+ "tolerance_abs": 1e-09,
+ "tolerance_rel": 1e-09
+}
